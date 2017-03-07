@@ -15,7 +15,7 @@ class Setup_Smarty extends Smarty{
 		$this->config_dir = 'Smarty/configs/';
 		$this->cache_dir = 'Smarty/cache/';
 		$this->caching = false;
-		$this->assign('app_name', 'utente');
+		$this->assign('app_name', 'travel_network'); // project name
 	}
 }
 //creo l'istanza
@@ -37,7 +37,7 @@ $smarty = new Setup_Smarty();
 	function is_logged()
 	{
 	 global $smarty;
-	 if(isset($_SESSION['id']))
+	 if(isset($_SESSION['id_user']))
 	 	return 1;
 	 else
 	 	return 0;

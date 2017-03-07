@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-06 20:54:19
+/* Smarty version 3.1.30, created on 2017-03-07 16:17:43
   from "C:\wamp64\www\travel_network\Smarty\templates\header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58bdcc7bbadfd8_77501140',
+  'unifunc' => 'content_58bedd2728acd0_40153409',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '11d5eddd23468111a21e002d0f50630a4cd2607b' => 
     array (
       0 => 'C:\\wamp64\\www\\travel_network\\Smarty\\templates\\header.tpl',
-      1 => 1488833128,
+      1 => 1488903445,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58bdcc7bbadfd8_77501140 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58bedd2728acd0_40153409 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,7 +112,10 @@ function content_58bdcc7bbadfd8_77501140 (Smarty_Internal_Template $_smarty_tpl)
                   <li><a href="contact.html">Contact Us</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="contact.html">Contact</a></li>
+              <li class="dropdown">
+                <!-- // FORM: logout -->  
+                <a href="logout.php" >Logout</a>
+              </li>
             </ul>
             <form class="navbar-form navbar-right hidden-sm">
               <div class="form-group">
