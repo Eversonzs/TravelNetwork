@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-06 20:54:12
+/* Smarty version 3.1.30, created on 2017-03-07 13:07:53
   from "C:\wamp64\www\travel_network\Smarty\templates\index-register.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58bdcc74370643_10213372',
+  'unifunc' => 'content_58beb0a9b4e623_02268955',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bfe1f04eed447919bba5c49d0e284030119c5fae' => 
     array (
       0 => 'C:\\wamp64\\www\\travel_network\\Smarty\\templates\\index-register.tpl',
-      1 => 1488833615,
+      1 => 1488892069,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58bdcc74370643_10213372 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58beb0a9b4e623_02268955 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@ function content_58bdcc74370643_10213372 (Smarty_Internal_Template $_smarty_tpl)
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>Friend Finder | A Complete Social Network Template</title>
+		<title>Travel Network</title>
 
     <!-- Stylesheets
     ================================================= -->
@@ -168,6 +168,12 @@ function content_58bdcc74370643_10213372 (Smarty_Internal_Template $_smarty_tpl)
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
+                        <label for="username" class="sr-only">Username</label>
+                        <input id="username" class="form-control input-group-lg" type="text" name="username" title="Enter an username" placeholder="Choose an username"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
                         <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
                       </div>
@@ -176,6 +182,12 @@ function content_58bdcc74370643_10213372 (Smarty_Internal_Template $_smarty_tpl)
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Password</label>
                         <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="cellphone" class="sr-only">Cellphone</label>
+                        <input id="cellphone" class="form-control input-group-lg" type="text" name="cellphone" title="Enter your cellphone number" placeholder="Your cellphone"/>
                       </div>
                     </div>
                     <div class="row">
@@ -548,9 +560,10 @@ function content_58bdcc74370643_10213372 (Smarty_Internal_Template $_smarty_tpl)
                         <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
                       </div>
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Login Now" />
-                  </form><!--Login Form Ends--> 
-                  <p><a href="#">Forgot Password?</a></p>
+                    <button class="btn btn-primary" type="submit">Login Now</button>
+                    <p><a href="#">Forgot Password?</a></p>
+                  </form><!--Login Form Ends-->
+                  
                   
                 </div>
               </div>

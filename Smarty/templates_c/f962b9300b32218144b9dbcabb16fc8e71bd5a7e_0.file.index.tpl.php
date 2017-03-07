@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-06 20:04:13
+/* Smarty version 3.1.30, created on 2017-03-07 12:07:26
   from "C:\wamp64\www\travel_network\Smarty\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58bdc0bde38407_92358261',
+  'unifunc' => 'content_58bea27e760068_99386637',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f962b9300b32218144b9dbcabb16fc8e71bd5a7e' => 
     array (
       0 => 'C:\\wamp64\\www\\travel_network\\Smarty\\templates\\index.tpl',
-      1 => 1488830561,
+      1 => 1488888437,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58bdc0bde38407_92358261 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58bea27e760068_99386637 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +32,7 @@ function content_58bdc0bde38407_92358261 (Smarty_Internal_Template $_smarty_tpl)
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>Friend Finder | A Complete Social Network Template</title>
+		<title>Travel Network</title>
 
     <!-- Stylesheets
     ================================================= -->
