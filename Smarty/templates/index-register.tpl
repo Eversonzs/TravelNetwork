@@ -8,7 +8,7 @@
 		<meta name="description" content="This is social network html5 template available in themeforest......" />
 		<meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
 		<meta name="robots" content="index, follow" />
-		<title>Friend Finder | A Complete Social Network Template</title>
+		<title>Travel Network</title>
 
     <!-- Stylesheets
     ================================================= -->
@@ -144,6 +144,12 @@
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
+                        <label for="username" class="sr-only">Username</label>
+                        <input id="username" class="form-control input-group-lg" type="text" name="username" title="Enter an username" placeholder="Choose an username"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
                         <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
                       </div>
@@ -152,6 +158,12 @@
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Password</label>
                         <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-xs-12">
+                        <label for="cellphone" class="sr-only">Cellphone</label>
+                        <input id="cellphone" class="form-control input-group-lg" type="text" name="cellphone" title="Enter your cellphone number" placeholder="Your cellphone"/>
                       </div>
                     </div>
                     <div class="row">
@@ -524,9 +536,10 @@
                         <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
                       </div>
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Login Now" />
-                  </form><!--Login Form Ends--> 
-                  <p><a href="#">Forgot Password?</a></p>
+                    <button class="btn btn-primary" type="submit">Login Now</button>
+                    <p><a href="#">Forgot Password?</a></p>
+                  </form><!--Login Form Ends-->
+                  
                   
                 </div>
               </div>

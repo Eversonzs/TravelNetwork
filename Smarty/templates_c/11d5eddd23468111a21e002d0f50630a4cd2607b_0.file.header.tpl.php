@@ -1,18 +1,30 @@
 <?php
+<<<<<<< HEAD
 /* Smarty version 3.1.30, created on 2017-03-07 16:17:43
+=======
+/* Smarty version 3.1.30, created on 2017-03-07 12:08:28
+>>>>>>> 3d69610a35f284abbaff3ac145e196d34122f87f
   from "C:\wamp64\www\travel_network\Smarty\templates\header.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
+<<<<<<< HEAD
   'unifunc' => 'content_58bedd2728acd0_40153409',
+=======
+  'unifunc' => 'content_58bea2bcd50bd5_60437118',
+>>>>>>> 3d69610a35f284abbaff3ac145e196d34122f87f
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '11d5eddd23468111a21e002d0f50630a4cd2607b' => 
     array (
       0 => 'C:\\wamp64\\www\\travel_network\\Smarty\\templates\\header.tpl',
+<<<<<<< HEAD
       1 => 1488903445,
+=======
+      1 => 1488888482,
+>>>>>>> 3d69610a35f284abbaff3ac145e196d34122f87f
       2 => 'file',
     ),
   ),
@@ -20,7 +32,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
+<<<<<<< HEAD
 function content_58bedd2728acd0_40153409 (Smarty_Internal_Template $_smarty_tpl) {
+=======
+function content_58bea2bcd50bd5_60437118 (Smarty_Internal_Template $_smarty_tpl) {
+>>>>>>> 3d69610a35f284abbaff3ac145e196d34122f87f
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +48,7 @@ function content_58bedd2728acd0_40153409 (Smarty_Internal_Template $_smarty_tpl)
     <meta name="description" content="This is social network html5 template available in themeforest......" />
     <meta name="keywords" content="Social Network, Social Media, Make Friends, Newsfeed, Profile Page" />
     <meta name="robots" content="index, follow" />
-    <title>News Feed | Check what your friends are doing</title>
+    <title>Travel Network</title>
 
     <!-- Stylesheets
     ================================================= -->
