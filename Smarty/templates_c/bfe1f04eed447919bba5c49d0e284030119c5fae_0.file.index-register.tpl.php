@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-03-09 11:52:31
+  from "C:\wamp64\www\travel_network\Smarty\templates\index-register.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58c141ff766d89_95229060',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'bfe1f04eed447919bba5c49d0e284030119c5fae' => 
+    array (
+      0 => 'C:\\wamp64\\www\\travel_network\\Smarty\\templates\\index-register.tpl',
+      1 => 1489060345,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_58c141ff766d89_95229060 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 	
@@ -119,23 +143,23 @@
               <!-- Register/Login Tabs-->
               <div class="reg-options">
                 <ul class="nav nav-tabs">
-                  {if isset($register)==1}
+                  <?php if (isset($_smarty_tpl->tpl_vars['register']->value) == 1) {?>
                     <li class="active"><a href="#register" data-toggle="tab">Register</a></li>
                     <li><a href="#login" data-toggle="tab">Login</a></li>
-                  {else}
+                  <?php } else { ?>
                     <li><a href="#register" data-toggle="tab">Register</a></li>
                     <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
-                  {/if}
+                  <?php }?>
                 </ul><!--Tabs End-->
               </div>
               
               <!--Registration Form Contents-->
               <div class="tab-content">
-                {if isset($register)==1}
+                <?php if (isset($_smarty_tpl->tpl_vars['register']->value) == 1) {?>
                   <div class="tab-pane active" id="register">
-                {else}
+                <?php } else { ?>
                   <div class="tab-pane" id="register">
-                {/if}
+                <?php }?>
                   <h3>Register Now !!!</h3>
                   <p class="text-muted">Be cool and join today. Meet millions</p>
                   
@@ -145,7 +169,9 @@
                       <div class="form-group col-xs-6">
                         <input type="hidden" name="check" value="1"/>
                         <label for="firstname" class="sr-only">First Name</label>
-                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="{if isset($name)}{$name}{/if}">
+                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="<?php if (isset($_smarty_tpl->tpl_vars['name']->value)) {
+echo $_smarty_tpl->tpl_vars['name']->value;
+}?>">
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="lastname" class="sr-only">Last Name</label>
@@ -161,13 +187,17 @@
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}"/>
+                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="<?php if (isset($_smarty_tpl->tpl_vars['email']->value)) {
+echo $_smarty_tpl->tpl_vars['email']->value;
+}?>"/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Password</label>
-                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" value="{if isset($password)}{$password}{/if}"/>
+                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" value="<?php if (isset($_smarty_tpl->tpl_vars['password']->value)) {
+echo $_smarty_tpl->tpl_vars['password']->value;
+}?>"/>
                       </div>
                     </div>
                     <div class="row">
@@ -586,13 +616,25 @@
 
     <!-- Scripts
     ================================================= -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.appear.min.js"></script>
-		<script src="js/jquery.incremental-counter.js"></script>
-    <script src="js/script.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/jquery.appear.min.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ src="js/jquery.incremental-counter.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/script.js"><?php echo '</script'; ?>
+>
     
 	</body>
 
 <!-- Mirrored from thunder-team.com/friend-finder/index-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Feb 2017 11:16:41 GMT -->
 </html>
+<?php }
+}
