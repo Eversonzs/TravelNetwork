@@ -110,26 +110,27 @@
         <!-- Sign Up Form
         ================================================= -->
         <div class="sign-up-form">
-			<a href="index.html" class="logo"><img src="images/logo.png" alt="Friend Finder"/></a>
+			<a href="index.php" class="logo"><img src="images/logo.png" alt="Friend Finder"/></a>
 			<h2 class="text-white">Find My Friends</h2>
 			<div class="line-divider"></div>
 			<div class="form-wrapper">
 				<p class="signup-text">Signup now and meet awesome people around the world</p>
-				<form action="#">
+				<form method="POST" action="signup.php">
 					<fieldset class="form-group">
-						<input type="text" class="form-control" id="example-name" placeholder="Enter name">
+						<input type="hidden" name="check" value="1"/>
+						<input type="text" class="form-control" name="name" placeholder="Enter name">
 					</fieldset>
 					<fieldset class="form-group">
-						<input type="email" class="form-control" id="example-email" placeholder="Enter email">
+						<input type="email" class="form-control" name="email" placeholder="Enter email">
 					</fieldset>
 					<fieldset class="form-group">
-						<input type="password" class="form-control" id="example-password" placeholder="Enter a password">
-					</fieldset>
+						<input type="password" class="form-control" name="password" placeholder="Enter a password">
+					</fieldset>				
+					<p>By signning up you agree to the terms</p>
+					<button type="submit" class="btn-secondary">Signup</button>
 				</form>
-				<p>By signning up you agree to the terms</p>
-				<button class="btn-secondary">Signup</button>
 			</div>
-			<a href="#">Already have an account?</a>
+			<a href="index-register.php">Already have an account?</a>
 			<img class="form-shadow" src="images/bottom-shadow.png" alt="" />
 		</div><!-- Sign Up Form End -->
 

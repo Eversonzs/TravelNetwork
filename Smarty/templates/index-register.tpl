@@ -109,7 +109,7 @@
         	<div class="col-sm-5">
             <div class="intro-texts">
             	<h1 class="text-white">Make Cool Friends !!!</h1>
-            	<p>Friend Finder is a social network template that can be used to connect people. The template offers Landing pages, News Feed, Image/Video Feed, Chat Box, Timeline and lot more. <br /> <br />Why are you waiting for? Buy it now.</p>
+            	<p>Friend Finder is a social network template that can be used to connect people. The template offers Landing pages, News Feed, Image/Video Feed, Chat Box, Timeline and lot more. <br /></p>
               <button class="btn btn-primary">Learn More</button>
             </div>
           </div>
@@ -131,11 +131,12 @@
                   <p class="text-muted">Be cool and join today. Meet millions</p>
                   
                   <!--Register Form-->
-                  <form name="registration_form" id='registration_form' class="form-inline">
+                  <form name="registration_form" id='registration_form' class="form-inline" action="register.php" method="post">
                     <div class="row">
                       <div class="form-group col-xs-6">
+                        <input type="hidden" name="check" value="1"/>
                         <label for="firstname" class="sr-only">First Name</label>
-                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name"/>
+                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="{if isset($name)}{$name}{/if}">
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="lastname" class="sr-only">Last Name</label>
@@ -151,13 +152,13 @@
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}"/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Password</label>
-                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" value="{if isset($password)}{$password}{/if}"/>
                       </div>
                     </div>
                     <div class="row">
@@ -242,22 +243,17 @@
                         </select>
                       </div>
                     </div>
-                    <div class="form-group gender">
-                      <label class="radio-inline">
-                        <input type="radio" name="optradio" checked>Male
-                      </label>
-                      <label class="radio-inline">
-                        <input type="radio" name="optradio">Female
-                      </label>
+                    <div class="row">
+                      <p class="birth"><strong>Location</strong></p>
+                      <div class="form-group col-xs-12">
+                        <label for="city" class="sr-only">city</label>
+                        <input id="city" class="form-control input-group-lg reg_name" type="text" name="city" title="Enter city" placeholder="Your city"/>
+                      </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-6">
-                        <label for="city" class="sr-only">First Name</label>
-                        <input id="city" class="form-control input-group-lg reg_name" type="text" name="city" title="Enter city" placeholder="Your city"/>
-                      </div>
-                      <div class="form-group col-xs-6">
                         <label for="country" class="sr-only"></label>
-                        <select class="form-control" id="country">
+                        <select class="form-control" id="country" name="country">
                           <option value="country" disabled selected>Country</option>
                           <option value="AFG">Afghanistan</option>
                           <option value="ALA">Åland Islands</option>
@@ -510,10 +506,22 @@
                           <option value="ZWE">Zimbabwe</option>
                         </select>
                       </div>
+                      <div class="form-group col-xs-6">
+                        <label for="continent" class="sr-only"></label>
+                        <select class="form-control" id="continent" name="continent">
+                          <option value="continent" disabled selected>Continent</option>
+                          <option value="Asia">Asia</option>
+                          <option value="America">America</option>
+                          <option value="Africa">Africa</option>
+                          <option value="Antartida">Antartida</option>
+                          <option value="Europa">Europa</option>
+                          <option value="Oceania">Oceania</option>
+                        </select>
+                      </div>
                     </div>
+                    <p><a href="#login" data-toggle="tab">Already have an account?</a></p>
+                    <button type='submit' class="btn btn-primary">Register Now</button>
                   </form><!--Register Now Form Ends-->
-                  <p><a href="#">Already have an account?</a></p>
-                  <button class="btn btn-primary">Register Now</button>
                 </div><!--Registration Form Contents Ends-->
                 
                 <!--Login-->

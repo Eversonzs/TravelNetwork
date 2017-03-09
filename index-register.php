@@ -11,7 +11,10 @@ include('config/core.php');
 	{
 		if( $_POST['password'] == '' || $_POST['Email'] == '')
 		{
-			header('location: index.php');
+			$smarty->assign("error","Fill the fields");
+			$smarty->display('error.tpl');
+			mysqli_close($connection);
+			die();
 		}
 
 		$email = filtra( $_POST['Email'], $connection);
@@ -21,7 +24,10 @@ include('config/core.php');
 
 		if(!$result = mysqli_query($connection, $query))
 		{
-			header('location: newsfeed.php');
+			$smarty->assign("error","SQL errror: " . mysqli_error($connection));
+			$smarty->display('error.tpl');
+			mysqli_close($connection);
+			die();
 		}
 		else
 		{	
@@ -31,7 +37,6 @@ include('config/core.php');
 				$_SESSION['user_name'] = $row['user_name'];
 				header('location: newsfeed.php');
 			}
-
 		}
 	}
 
