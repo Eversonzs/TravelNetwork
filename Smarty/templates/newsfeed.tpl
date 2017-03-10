@@ -1,8 +1,5 @@
 {include file="header.tpl"}
   <body>
-
- 
-
     <div id="page-contents">
     	<div class="container">
     		<div class="row">

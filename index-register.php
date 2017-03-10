@@ -11,8 +11,8 @@ include('config/core.php');
 	{
 		if( $_POST['password'] == '' || $_POST['Email'] == '')
 		{
-			$smarty->assign("error","Fill the fields");
-			$smarty->display('error.tpl');
+			$smarty->assign("message","Fill the fields");
+			$smarty->display('message.tpl');
 			mysqli_close($connection);
 			die();
 		}
@@ -24,8 +24,8 @@ include('config/core.php');
 
 		if(!$result = mysqli_query($connection, $query))
 		{
-			$smarty->assign("error","SQL errror: " . mysqli_error($connection));
-			$smarty->display('error.tpl');
+			$smarty->assign("message","SQL errror: " . mysqli_error($connection));
+			$smarty->display('message.tpl');
 			mysqli_close($connection);
 			die();
 		}

@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <script languaje="JavaScript" src="js/functions.js"></script>
     
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
@@ -36,7 +37,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.html"><img src="images/logo.png" alt="logo" /></a>
+            <a class="navbar-brand" href="index-register.php"><img src="images/logo.png" alt="logo" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -145,110 +146,73 @@
                       <div class="form-group col-xs-6">
                         <input type="hidden" name="check" value="1"/>
                         <label for="firstname" class="sr-only">First Name</label>
-                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="{if isset($name)}{$name}{/if}">
+                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="{if isset($name)}{$name}{/if}" required/>
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="lastname" class="sr-only">Last Name</label>
-                        <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Last name"/>
+                        <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Last name" required/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="username" class="sr-only">Username</label>
-                        <input id="username" class="form-control input-group-lg" type="text" name="username" title="Enter an username" placeholder="Choose an username"/>
+                        <input id="username" class="form-control input-group-lg" type="text" name="username" title="Enter an username" placeholder="Choose an username" required/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}"/>
+                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}" required/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Password</label>
-                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" value="{if isset($password)}{$password}{/if}"/>
+                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" value="{if isset($password)}{$password}{/if}" required/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="cellphone" class="sr-only">Cellphone</label>
-                        <input id="cellphone" class="form-control input-group-lg" type="text" name="cellphone" title="Enter your cellphone number" placeholder="Your cellphone"/>
+                        <input id="cellphone" class="form-control input-group-lg" type="text" name="cellphone" title="Enter your cellphone number" placeholder="Your cellphone" required/>
                       </div>
                     </div>
                     <div class="row">
                       <p class="birth"><strong>Date of Birth</strong></p>
                       <div class="form-group col-sm-3 col-xs-6">
-                        <label for="month" class="sr-only"></label>
-                        <select class="form-control" id="day">
-                          <option value="Day" disabled selected>Day</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
-                          <option>11</option>
-                          <option>12</option>
-                          <option>13</option>
-                          <option>14</option>
-                          <option>15</option>
-                          <option>16</option>
-                          <option>17</option>
-                          <option>18</option>
-                          <option>19</option>
-                          <option>20</option>
-                          <option>21</option>
-                          <option>22</option>
-                          <option>23</option>
-                          <option>24</option>
-                          <option>25</option>
-                          <option>26</option>
-                          <option>27</option>
-                          <option>28</option>
-                          <option>29</option>
-                          <option>30</option>
-                          <option>31</option>
+                        <label for="day" class="sr-only"></label>
+                        <select class="form-control" id="day" name="day">
+                          <option value="" disabled selected>Day</option>
+                          <script>
+                            list_days();
+                          </script>
                         </select>
                       </div>
                       <div class="form-group col-sm-3 col-xs-6">
                         <label for="month" class="sr-only"></label>
-                        <select class="form-control" id="month">
-                          <option value="month" disabled selected>Month</option>
-                          <option>Jan</option>
-                          <option>Feb</option>
-                          <option>Mar</option>
-                          <option>Apr</option>
-                          <option>May</option>
-                          <option>Jun</option>
-                          <option>Jul</option>
-                          <option>Aug</option>
-                          <option>Sep</option>
-                          <option>Oct</option>
-                          <option>Nov</option>
-                          <option>Dec</option>
+                        <select class="form-control" id="month" name="month">
+                          <option value="" disabled selected>Month</option>
+                          <option value="01">Jan</option>
+                          <option value="02">Feb</option>
+                          <option value="03">Mar</option>
+                          <option value="04">Apr</option>
+                          <option value="05">May</option>
+                          <option value="06">Jun</option>
+                          <option value="07">Jul</option>
+                          <option value="08">Aug</option>
+                          <option value="09">Sep</option>
+                          <option value="10">Oct</option>
+                          <option value="11">Nov</option>
+                          <option value="12">Dec</option>
                         </select>
                       </div>
                       <div class="form-group col-sm-6 col-xs-12">
                         <label for="year" class="sr-only"></label>
-                        <select class="form-control" id="year">
-                          <option value="year" disabled selected>Year</option>
-                          <option>2000</option>
-                          <option>2001</option>
-                          <option>2002</option>
-                          <option>2004</option>
-                          <option>2005</option>
-                          <option>2006</option>
-                          <option>2007</option>
-                          <option>2008</option>
-                          <option>2009</option>
-                          <option>2010</option>
-                          <option>2011</option>
-                          <option>2012</option>
+                        <select class="form-control" id="year" name="year">
+                          <option value="" disabled selected>Year</option>
+                          <script>
+                            list_years();
+                          </script>
                         </select>
                       </div>
                     </div>
@@ -256,14 +220,14 @@
                       <p class="birth"><strong>Location</strong></p>
                       <div class="form-group col-xs-12">
                         <label for="city" class="sr-only">city</label>
-                        <input id="city" class="form-control input-group-lg reg_name" type="text" name="city" title="Enter city" placeholder="Your city"/>
+                        <input id="city" class="form-control input-group-lg reg_name" type="text" name="city" title="Enter city" placeholder="Your city" required/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-6">
                         <label for="country" class="sr-only"></label>
                         <select class="form-control" id="country" name="country">
-                          <option value="country" disabled selected>Country</option>
+                          <option value="" disabled selected>Country</option>
                           <option value="AFG">Afghanistan</option>
                           <option value="ALA">Åland Islands</option>
                           <option value="ALB">Albania</option>
@@ -518,7 +482,7 @@
                       <div class="form-group col-xs-6">
                         <label for="continent" class="sr-only"></label>
                         <select class="form-control" id="continent" name="continent">
-                          <option value="continent" disabled selected>Continent</option>
+                          <option value="" disabled selected>Continent</option>
                           <option value="Asia">Asia</option>
                           <option value="America">America</option>
                           <option value="Africa">Africa</option>
@@ -534,7 +498,11 @@
                 </div><!--Registration Form Contents Ends-->
                 
                 <!--Login-->
-                <div class="tab-pane active" id="login">
+                {if isset($register)==1}
+                  <div class="tab-pane" id="login">
+                {else}
+                  <div class="tab-pane active" id="login">
+                {/if}
                   <h3>Login</h3>
                   <p class="text-muted">Log into your account</p>
                   
@@ -544,13 +512,13 @@
                       <div class="form-group col-xs-12">
                         <label for="my-email" class="sr-only">Email</label>
                         <input type="hidden" name="check" value="1"/>
-                        <input id="my-email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email"/>
+                        <input id="my-email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" required />
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="my-password" class="sr-only">Password</label>
-                        <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password"/>
+                        <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" required/>
                       </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Login Now</button>

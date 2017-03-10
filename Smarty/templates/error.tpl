@@ -1,1 +1,0 @@
-{if $error} Error: {$error} {/if}
