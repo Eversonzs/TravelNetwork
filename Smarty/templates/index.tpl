@@ -46,8 +46,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="index.html">Landing Page 1</a></li>
-                    <li><a href="index-register.html">Landing Page 2</a></li>
+                    <li><a href="index.php">Welcome page</a></li>
+                    <li><a href="index-register.php">Register page</a></li>
                   </ul>
               </li>
               <li class="dropdown">
