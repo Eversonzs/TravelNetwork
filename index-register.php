@@ -21,7 +21,7 @@ include('config/core.php');
 		$query = "SELECT * FROM tbl_users WHERE email='$email' and user_password='$password'";
 
 		if(!$result = mysqli_query($connection, $query)){
-			$smarty->assign("message","SQL errror: " . mysqli_error($connection));
+			$smarty->assign("message","ERROR: SQL error during the registration, try again! " . mysqli_error($connection));
 			$smarty->display('message.tpl');
 			mysqli_close($connection);
 			die();

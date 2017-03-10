@@ -54,7 +54,7 @@ include('config/core.php');
 		$country = $_POST['country'];
 		$continent = $_POST['continent'];
 
-		if(!$query_city = mysqli_query($connection, "SELECT id_location FROM tbl_locations WHERE city='$city'")){
+		if(!$query_city = mysqli_query($connection, "SELECT id_location FROM tbl_locations WHERE LOWER(city)=LOWER('$city')")){
 			$smarty->assign('message','ERROR: SQL error during the registration, try again! '.mysql_error());
 			$smarty->display('message.tpl');
 			mysqli_close($connection);
@@ -72,7 +72,7 @@ include('config/core.php');
 			die();
 			}
 
-			if(!$query_city = mysqli_query($connection, "SELECT id_location FROM tbl_locations WHERE city='$city'")){
+			if(!$query_city = mysqli_query($connection, "SELECT id_location FROM tbl_locations WHERE LOWER(city)=LOWER('$city')")){
 			$smarty->assign('message','ERROR: SQL error during the registration, try again! '.mysql_error());
 			$smarty->display('message.tpl');
 			mysqli_close($connection);
@@ -92,10 +92,27 @@ include('config/core.php');
 			die();
 		}
 
+		/*
 		$smarty->assign('message','CONGRATULATION: You are now register! ');
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();
+		*/
+	
+		$query = "SELECT * FROM tbl_users WHERE email='$email' and user_password='$user_password'";
+
+		if(!$result = mysqli_query($connection, $query)){
+			$smarty->assign("message","SQL errror: SQL error during the registration, try again! " . mysqli_error($connection));
+			$smarty->display('message.tpl');
+			mysqli_close($connection);
+			die();
+		} else{	
+			while ($row = mysqli_fetch_assoc($result) ){ //guardamos cada registro en una variable para mostrarlo
+				$_SESSION['id_user'] = $row['id_user'];
+				$_SESSION['user_name'] = $row['user_name'];
+				header('location: newsfeed.php');
+			}
+		}
 
 		//header('location: newsfeed.php');
 	}
