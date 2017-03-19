@@ -29,6 +29,8 @@ include('config/core.php');
 			while ($row = mysqli_fetch_assoc($result) ){ //guardamos cada registro en una variable para mostrarlo
 				$_SESSION['id_user'] = $row['id_user'];
 				$_SESSION['user_name'] = $row['user_name'];
+				$_SESSION['name'] = $row['name'];
+				$_SESSION['surname'] = $row['surname'];
 				header('location: newsfeed.php');
 			}
 		}

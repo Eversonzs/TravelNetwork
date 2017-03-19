@@ -92,27 +92,19 @@ include('config/core.php');
 			die();
 		}
 
-		/*
+		$id_user = mysqli_insert_id($connection);
+		if(!mysqli_query($connection, "INSERT INTO tbl_users_groups (id_user, id_group) VALUES ('$id_user','2')")){
+			$smarty->assign('message','ERROR: SQL error during the registration, try again!');
+			$smarty->display('message.tpl');
+			mysqli_close($connection);
+			die();
+		}
+
 		$smarty->assign('message','CONGRATULATION: You are now register! ');
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();
-		*/
-	
-		$query = "SELECT * FROM tbl_users WHERE email='$email' and user_password='$user_password'";
-
-		if(!$result = mysqli_query($connection, $query)){
-			$smarty->assign("message","SQL errror: SQL error during the registration, try again! " . mysqli_error($connection));
-			$smarty->display('message.tpl');
-			mysqli_close($connection);
-			die();
-		} else{	
-			while ($row = mysqli_fetch_assoc($result) ){ //guardamos cada registro en una variable para mostrarlo
-				$_SESSION['id_user'] = $row['id_user'];
-				$_SESSION['user_name'] = $row['user_name'];
-				header('location: newsfeed.php');
-			}
-		}
+		
 
 		//header('location: newsfeed.php');
 	}
