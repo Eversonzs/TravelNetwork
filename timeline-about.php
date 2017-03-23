@@ -18,8 +18,8 @@
 
 		if (mysqli_num_rows($query_user)>0){
 			while ($row = mysqli_fetch_assoc($query_user)){
-				$user[] = $row;
-			}
+			$user[] = $row;
+		}
 
 		} else{
 			$smarty->assign('message','ERROR: There is not data! ');

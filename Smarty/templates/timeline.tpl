@@ -9,60 +9,55 @@
       <div class="timeline">
         <div class="timeline-cover">
 
-          <!--Timeline Menu for Large Screens-->
-          <div class="timeline-nav-bar hidden-sm hidden-xs">
-            <div class="row">
-              {if isset($user)}
-                {foreach name=tbl_users item=smarty_user from=$user}
-                  <div class="col-md-3">
-                    <div class="profile-info">
-                      <img src="images/users/user-1.jpg" alt="" class="img-responsive profile-photo" />
-                        <h3>
-                          {$smarty_user.name} {$smarty_user.surname}
-                        </h3>
-                      <p class="text-muted">Creative Director</p>
-                    </div>
-                  </div>
-                  <div class="col-md-9">
-                    <ul class="list-inline profile-menu">
-                      <li><a href="timeline.php?id_user={$smarty_user.id_user}" class="active">Timeline</a></li>
-                      <li><a href="timeline-about.php?id_user={$smarty_user.id_user}">About</a></li>
-                      <li><a href="timeline-album.html">Album</a></li>
-                      <li><a href="timeline-friends.html">Friends</a></li>
-                    </ul>
-                    <ul class="follow-me list-inline">
-                      <li>1,299 people following her</li>
-                      <li><button class="btn-primary">Add Friend</button></li>
-                    </ul>
-                  </div>
-                {/foreach}
-              {/if}
-            </div>
-          </div><!--Timeline Menu for Large Screens End-->
+          {if isset($user)}
+            {foreach name=tbl_users item=smarty_user from=$user}
+              <!--Timeline Menu for Large Screens-->
+              <div class="timeline-nav-bar hidden-sm hidden-xs">
+                <div class="row">
+                      <div class="col-md-3">
+                        <div class="profile-info">
+                          <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
+                            <h3>
+                              {$smarty_user.name} {$smarty_user.surname}
+                            </h3>
+                          <p class="text-muted">Creative Director</p>
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <ul class="list-inline profile-menu">
+                          <li><a href="timeline.php?id_user={$smarty_user.id_user}" class="active">Timeline</a></li>
+                          <li><a href="timeline-about.php?id_user={$smarty_user.id_user}">About</a></li>
+                          <li><a href="timeline-album.html">Album</a></li>
+                          <li><a href="timeline-friends.html">Friends</a></li>
+                        </ul>
+                        <ul class="follow-me list-inline">
+                          <li>1,299 people following her</li>
+                          <li><button class="btn-primary">Add Friend</button></li>
+                        </ul>
+                      </div>
+                </div>
+              </div><!--Timeline Menu for Large Screens End-->
 
-          <!--Timeline Menu for Small Screens-->
-          <div class="navbar-mobile hidden-lg hidden-md">
-            <div class="profile-info">
-              <img src="images/users/user-1.jpg" alt="" class="img-responsive profile-photo" />
-              <h4>
-                {if isset($user)}
-                  {foreach name=tbl_users item=smarty_user from=$user}
+              <!--Timeline Menu for Small Screens-->
+              <div class="navbar-mobile hidden-lg hidden-md">
+                <div class="profile-info">
+                  <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
+                  <h4>
                     {$smarty_user.name} {$smarty_user.surname}
-                  {/foreach}
-                {/if}
-              </h4>
-              <p class="text-muted">Creative Director</p>
-            </div>
-            <div class="mobile-menu">
-              <ul class="list-inline">
-                <li><a href="timline.html" class="active">Timeline</a></li>
-                <li><a href="timeline-about.html">About</a></li>
-                <li><a href="timeline-album.html">Album</a></li>
-                <li><a href="timeline-friends.html">Friends</a></li>
-              </ul>
-              <button class="btn-primary">Add Friend</button>
-            </div>
-          </div><!--Timeline Menu for Small Screens End-->
+                  </h4>
+                  <p class="text-muted">Creative Director</p>
+                </div>
+                <div class="mobile-menu">
+                  <ul class="list-inline">
+                    <li><a href="timline.html" class="active">Timeline</a></li>
+                    <li><a href="timeline-about.html">About</a></li>
+                    <li><a href="timeline-album.html">Album</a></li>
+                    <li><a href="timeline-friends.html">Friends</a></li>
+                  </ul>
+                  <button class="btn-primary">Add Friend</button>
+                </div>
+              </div><!--Timeline Menu for Small Screens End-->
+
 
         </div>
         <div id="page-contents">
@@ -76,7 +71,7 @@
                 <div class="row">
                   <div class="col-md-7 col-sm-7">
                     <div class="form-group">
-                      <img src="images/users/user-1.jpg" alt="" class="profile-photo-md" />
+                      <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-md" />
                       <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
                     </div>
                   </div>
@@ -93,6 +88,8 @@
                   </div>
                 </div>
               </div><!-- Post Create Box End-->
+            {/foreach}
+          {/if}
 
               <!-- Post Content
               ================================================= -->
@@ -108,7 +105,7 @@
 
                 <img src="images/post-images/12.jpg" alt="post-image" class="img-responsive post-image" />
                 <div class="post-container">
-                  <img src="images/users/user-1.jpg" alt="user" class="profile-photo-md pull-left" />
+                  <img src="images/users/{if $smarty_publication.profile_photo}{$smarty_publication.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="profile-photo-md pull-left" />
                   <div class="post-detail">
                     <div class="user-info">
                       <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a> <span class="following">following</span></h5>
@@ -117,6 +114,9 @@
                     <div class="reaction">
                       <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
                       <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+                      {if $smarty_publication.id_user == $smarty.session.id_user}
+                        <a class="btn text-red" href="delete_publication.php?id_publication={$smarty_publication.id_publication}">x</a>
+                      {/if}
                     </div>
                     <div class="line-divider"></div>
                     <div class="post-text">
@@ -127,14 +127,17 @@
                       {foreach name=tbl_comments item=smarty_comments from=$comments}
                         {if $smarty_publication.id_publication == $smarty_comments.id_publication}
                           <div class="post-comment">
-                            <img src="images/users/user-11.jpg" alt="" class="profile-photo-sm" />
+                            <img src="images/users/{if $smarty_comments.profile_photo}{$smarty_comments.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-sm" />
                             <p><a href="timeline.php?id_user={$smarty_comments.id_user}" class="profile-link">{$smarty_comments.user_name} </a><i class="em em-laughing"></i>{$smarty_comments.comment}</p>
+                            {if $smarty_comments.id_user == $smarty.session.id_user || $smarty_publication.id_user==$smarty.session.id_user}
+                              <a class="btn text-red" href="delete_comments.php?id_comment={$smarty_comments.id_comment}&id_user={$smarty_publication.id_user}">x</a>
+                            {/if}
                           </div>
                         {/if}
                       {/foreach}
                     {/if}
                     <div class="post-comment">
-                      <img src="images/users/user-1.jpg" alt="" class="profile-photo-sm" />
+                      <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-sm" />
                       <input type="text" class="form-control" placeholder="Post a comment">
                     </div>
                   </div>
@@ -143,37 +146,6 @@
               {/if}
               </div>
             </div>
-            <!--
-            <div class="col-md-2 static">
-              <div id="sticky-sidebar">
-                <h4 class="grey">Sarah's activity</h4>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Commended on a Photo</p>
-                    <p class="text-muted">5 mins ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Has posted a photo</p>
-                    <p class="text-muted">an hour ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Liked her friend's post</p>
-                    <p class="text-muted">4 hours ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> has shared an album</p>
-                    <p class="text-muted">a day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            -->
           </div>
         </div>
       </div>

@@ -8,55 +8,54 @@
       ================================================= -->
       <div class="timeline">
         <div class="timeline-cover">
+          {if isset($user)}
+            {foreach name=tbl_users item=smarty_user from=$user}
+              <!--Timeline Menu for Large Screens-->
+              <div class="timeline-nav-bar hidden-sm hidden-xs">
+                <div class="row">
+                      <div class="col-md-3">
+                        <div class="profile-info">
+                          <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
+                            <h3>
+                              {$smarty_user.name} {$smarty_user.surname}
+                            </h3>
+                          <p class="text-muted">Creative Director</p>
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <ul class="list-inline profile-menu">
+                          <li><a href="timeline.php?id_user={$smarty_user.id_user}">Timeline</a></li>
+                          <li><a href="timeline-about.php?id_user={$smarty_user.id_user}" class="active">About</a></li>
+                          <li><a href="timeline-album.html">Album</a></li>
+                          <li><a href="timeline-friends.html">Friends</a></li>
+                        </ul>
+                        <ul class="follow-me list-inline">
+                          <li>1,299 people following her</li>
+                          <li><button class="btn-primary">Add Friend</button></li>
+                        </ul>
+                      </div>
+                </div>
+              </div><!--Timeline Menu for Large Screens End-->
 
-          <!--Timeline Menu for Large Screens-->
-          <div class="timeline-nav-bar hidden-sm hidden-xs">
-            <div class="row">
-              {if isset($user)}
-                {foreach name=tbl_users item=smarty_user from=$user}
-                  <div class="col-md-3">
-                    <div class="profile-info">
-                      <img src="images/users/user-1.jpg" alt="" class="img-responsive profile-photo" />
-                        <h3>
-                          {$smarty_user.name} {$smarty_user.surname}
-                        </h3>
-                      <p class="text-muted">Creative Director</p>
-                    </div>
-                  </div>
-                  <div class="col-md-9">
-                    <ul class="list-inline profile-menu">
-                      <li><a href="timeline.php?id_user={$smarty_user.id_user}">Timeline</a></li>
-                      <li><a href="timeline-about.php?id_user={$smarty_user.id_user}" class="active">About</a></li>
-                      <li><a href="timeline-album.html">Album</a></li>
-                      <li><a href="timeline-friends.html">Friends</a></li>
-                    </ul>
-                    <ul class="follow-me list-inline">
-                      <li>1,299 people following her</li>
-                      <li><button class="btn-primary">Add Friend</button></li>
-                    </ul>
-                  </div>
-                {/foreach}
-              {/if}
-            </div>
-          </div><!--Timeline Menu for Large Screens End-->
-
-          <!--Timeline Menu for Small Screens-->
-          <div class="navbar-mobile hidden-lg hidden-md">
-            <div class="profile-info">
-              <img src="images/users/user-1.jpg" alt="" class="img-responsive profile-photo" />
-              <h4>Sarah Cruiz</h4>
-              <p class="text-muted">Creative Director</p>
-            </div>
-            <div class="mobile-menu">
-              <ul class="list-inline">
-                <li><a href="timline.html">Timeline</a></li>
-                <li><a href="timeline-about.html" class="active">About</a></li>
-                <li><a href="timeline-album.html">Album</a></li>
-                <li><a href="timeline-friends.html">Friends</a></li>
-              </ul>
-              <button class="btn-primary">Add Friend</button>
-            </div>
-          </div><!--Timeline Menu for Small Screens End-->
+              <!--Timeline Menu for Small Screens-->
+              <div class="navbar-mobile hidden-lg hidden-md">
+                <div class="profile-info">
+                  <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
+                  <h4>Sarah Cruiz</h4>
+                  <p class="text-muted">Creative Director</p>
+                </div>
+                <div class="mobile-menu">
+                  <ul class="list-inline">
+                    <li><a href="timline.html">Timeline</a></li>
+                    <li><a href="timeline-about.html" class="active">About</a></li>
+                    <li><a href="timeline-album.html">Album</a></li>
+                    <li><a href="timeline-friends.html">Friends</a></li>
+                  </ul>
+                  <button class="btn-primary">Add Friend</button>
+                </div>
+              </div><!--Timeline Menu for Small Screens End-->
+            {/foreach}
+          {/if}
 
         </div>
         <div id="page-contents">
@@ -70,8 +69,7 @@
                 {if isset($user)}
                   {foreach name=tbl_users item=smarty_user from=$user}
                     {if $smarty_user.id_user == $smarty.session.id_user}
-                      <form name="registration_form" id='registration_form' class="form-inline" action="update_about.php" method="post">
-                      
+                      <form name="registration_form" id='registration_form' class="form-inline" action="update_about.php" method="post">      
                         <div class="row">
                           <div class="form-group col-xs-6">
                             <input type="hidden" name="check" value="1"/>
@@ -438,7 +436,7 @@
                         <ul class="contact">
                           <li><i class="icon ion-person"></i>Name: {$smarty_user.name} {$smarty_user.surname}</li>
                           <li><i class="icon ion-at"></i>Nickname: {$smarty_user.user_name}</li>
-                          <li><i class="icon ion-email"></i>Email: {$smarty_user.email}</li>
+                          <li><i class="icon ion-ios-email"></i>Email: {$smarty_user.email}</li>
                           <li><i class="icon ion-android-call"></i>Cellphone: {$smarty_user.cellphone}</li>
                           <li><i class="icon ion-location"></i>Location: {$smarty_user.continent}, {$smarty_user.country}, {$smarty_user.city}</li>
                           <li><i class="icon ion-calendar"></i>Born date: {$smarty_user.month_born} {$smarty_user.day_born}, {$smarty_user.year_born}</li>
@@ -539,16 +537,16 @@
     ================================================= -->
     <footer id="footer">
       <div class="container">
-      	<div class="row">
+        <div class="row">
           <div class="footer-wrapper">
             <div class="col-md-3 col-sm-3">
               <a href="#"><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
               <ul class="list-inline social-icons">
-              	<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+                <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+                <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+                <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+                <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+                <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
               </ul>
             </div>
             <div class="col-md-2 col-sm-2">
@@ -586,18 +584,18 @@
             <div class="col-md-3 col-sm-3">
               <h6>Contact Us</h6>
                 <ul class="contact">
-                	<li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
-                	<li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
+                  <li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
+                  <li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
                   <li><i class="icon ion-ios-location-outline"></i>228 Park Ave S NY, USA</li>
                 </ul>
             </div>
           </div>
-      	</div>
+        </div>
       </div>
       <div class="copyright">
         <p>Thunder Team © 2016. All rights reserved</p>
       </div>
-		</footer>
+    </footer>
     
     <!--preloader-->
     <div id="spinner-wrapper">
