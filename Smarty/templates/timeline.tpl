@@ -7,10 +7,9 @@
       <!-- Timeline
       ================================================= -->
       <div class="timeline">
-        <div class="timeline-cover">
-
-          {if isset($user)}
-            {foreach name=tbl_users item=smarty_user from=$user}
+      {if isset($user)}
+        {foreach name=tbl_users item=smarty_user from=$user}
+          <div class="timeline-cover" style="background: url(images/covers/{if $smarty_user.header_photo}{$smarty_user.header_photo}{else}header_default.jpg{/if}) no-repeat">
               <!--Timeline Menu for Large Screens-->
               <div class="timeline-nav-bar hidden-sm hidden-xs">
                 <div class="row">
@@ -88,8 +87,8 @@
                   </div>
                 </div>
               </div><!-- Post Create Box End-->
-            {/foreach}
-          {/if}
+        {/foreach}
+      {/if}
 
               <!-- Post Content
               ================================================= -->

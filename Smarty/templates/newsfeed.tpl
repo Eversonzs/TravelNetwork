@@ -7,7 +7,7 @@
           <!-- Newsfeed Common Side Bar Left
           ================================================= -->
           <div class="col-md-3 static">
-            <div class="profile-card">
+            <div class="profile-card" style="background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url(images/covers/{if $smarty.session.header_photo}{$smarty.session.header_photo}{else}header_default.jpg{/if}) no-repeat">
               <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="profile-photo" />
               <h5><a href="timeline.php?id_user={$smarty.session.id_user}" class="text-white"> {$smarty.session.user_name} </a></h5>
               <a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>

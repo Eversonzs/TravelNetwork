@@ -22,7 +22,7 @@
 		$smarty->assign("publication",$publications);
 	}
 
-	if(!$query_user = mysqli_query($connection, "SELECT id_user, name, surname, profile_photo FROM tbl_users WHERE id_user='$id_user'")){
+	if(!$query_user = mysqli_query($connection, "SELECT id_user, name, surname, profile_photo, header_photo FROM tbl_users WHERE id_user='$id_user'")){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);

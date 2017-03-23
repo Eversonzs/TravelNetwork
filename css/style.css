@@ -918,7 +918,9 @@ textarea{
 /*Profile Card CSS*/
 
 .profile-card{
-  background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url(../images/covers/1.jpg) no-repeat;
+  /*
+  background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url(../images/covers/header_default.jpg) no-repeat;
+  */
   background-size: cover;
   width: 100%;
   min-height: 90px;
@@ -1427,7 +1429,9 @@ ul.online-users li span.online-dot{
   ==================================================*/
 
 .timeline-cover{
-  background: url("../images/covers/1.jpg") no-repeat;
+  /*
+  background: url('../images/covers/header_default.jpg') no-repeat;
+  */
   background-position: center;
   background-size: cover;
   min-height: 360px;

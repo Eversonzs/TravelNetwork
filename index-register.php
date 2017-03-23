@@ -32,6 +32,7 @@ include('config/core.php');
 				$_SESSION['name'] = $row['name'];
 				$_SESSION['surname'] = $row['surname'];
 				$_SESSION['profile_photo'] = $row['profile_photo'];
+				$_SESSION['header_photo'] = $row['header_photo'];
 				header('location: newsfeed.php');
 			}
 		}

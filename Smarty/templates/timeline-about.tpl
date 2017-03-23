@@ -1,63 +1,62 @@
 {include file="header.tpl"}
   <body>
 
-
     <div class="container">
 
       <!-- Timeline
       ================================================= -->
       <div class="timeline">
-        <div class="timeline-cover">
-          {if isset($user)}
-            {foreach name=tbl_users item=smarty_user from=$user}
-              <!--Timeline Menu for Large Screens-->
-              <div class="timeline-nav-bar hidden-sm hidden-xs">
-                <div class="row">
-                      <div class="col-md-3">
-                        <div class="profile-info">
-                          <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
-                            <h3>
-                              {$smarty_user.name} {$smarty_user.surname}
-                            </h3>
-                          <p class="text-muted">Creative Director</p>
-                        </div>
+      {if isset($user)}
+        {foreach name=tbl_users item=smarty_user from=$user}
+          <div class="timeline-cover" style="background: url(images/covers/{if $smarty_user.header_photo}{$smarty_user.header_photo}{else}header_default.jpg{/if}) no-repeat">
+            <!--Timeline Menu for Large Screens-->
+            <div class="timeline-nav-bar hidden-sm hidden-xs">
+              <div class="row">
+                    <div class="col-md-3">
+                      <div class="profile-info">
+                        <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
+                          <h3>
+                            {$smarty_user.name} {$smarty_user.surname}
+                          </h3>
+                        <p class="text-muted">Creative Director</p>
                       </div>
-                      <div class="col-md-9">
-                        <ul class="list-inline profile-menu">
-                          <li><a href="timeline.php?id_user={$smarty_user.id_user}">Timeline</a></li>
-                          <li><a href="timeline-about.php?id_user={$smarty_user.id_user}" class="active">About</a></li>
-                          <li><a href="timeline-album.html">Album</a></li>
-                          <li><a href="timeline-friends.html">Friends</a></li>
-                        </ul>
-                        <ul class="follow-me list-inline">
-                          <li>1,299 people following her</li>
-                          <li><button class="btn-primary">Add Friend</button></li>
-                        </ul>
-                      </div>
-                </div>
-              </div><!--Timeline Menu for Large Screens End-->
+                    </div>
+                    <div class="col-md-9">
+                      <ul class="list-inline profile-menu">
+                        <li><a href="timeline.php?id_user={$smarty_user.id_user}">Timeline</a></li>
+                        <li><a href="timeline-about.php?id_user={$smarty_user.id_user}" class="active">About</a></li>
+                        <li><a href="timeline-album.html">Album</a></li>
+                        <li><a href="timeline-friends.html">Friends</a></li>
+                      </ul>
+                      <ul class="follow-me list-inline">
+                        <li>1,299 people following her</li>
+                        <li><button class="btn-primary">Add Friend</button></li>
+                      </ul>
+                    </div>
+              </div>
+            </div><!--Timeline Menu for Large Screens End-->
 
-              <!--Timeline Menu for Small Screens-->
-              <div class="navbar-mobile hidden-lg hidden-md">
-                <div class="profile-info">
-                  <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
-                  <h4>Sarah Cruiz</h4>
-                  <p class="text-muted">Creative Director</p>
-                </div>
-                <div class="mobile-menu">
-                  <ul class="list-inline">
-                    <li><a href="timline.html">Timeline</a></li>
-                    <li><a href="timeline-about.html" class="active">About</a></li>
-                    <li><a href="timeline-album.html">Album</a></li>
-                    <li><a href="timeline-friends.html">Friends</a></li>
-                  </ul>
-                  <button class="btn-primary">Add Friend</button>
-                </div>
-              </div><!--Timeline Menu for Small Screens End-->
-            {/foreach}
-          {/if}
+            <!--Timeline Menu for Small Screens-->
+            <div class="navbar-mobile hidden-lg hidden-md">
+              <div class="profile-info">
+                <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
+                <h4>Sarah Cruiz</h4>
+                <p class="text-muted">Creative Director</p>
+              </div>
+              <div class="mobile-menu">
+                <ul class="list-inline">
+                  <li><a href="timline.html">Timeline</a></li>
+                  <li><a href="timeline-about.html" class="active">About</a></li>
+                  <li><a href="timeline-album.html">Album</a></li>
+                  <li><a href="timeline-friends.html">Friends</a></li>
+                </ul>
+                <button class="btn-primary">Add Friend</button>
+              </div>
+            </div><!--Timeline Menu for Small Screens End-->    
+          </div>
+        {/foreach}
+      {/if}
 
-        </div>
         <div id="page-contents">
           <div class="row">
             <div class="col-md-3"></div>
