@@ -1,3 +1,27 @@
+<?php
+/* Smarty version 3.1.30, created on 2017-03-23 11:51:27
+  from "C:\wamp64\www\travel_network\Smarty\templates\index-register.tpl" */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.30',
+  'unifunc' => 'content_58d3b6bf04b698_51359195',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'bfe1f04eed447919bba5c49d0e284030119c5fae' => 
+    array (
+      0 => 'C:\\wamp64\\www\\travel_network\\Smarty\\templates\\index-register.tpl',
+      1 => 1489147114,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_58d3b6bf04b698_51359195 (Smarty_Internal_Template $_smarty_tpl) {
+?>
 <!DOCTYPE html>
 <html lang="en">
 	
@@ -16,7 +40,9 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<link rel="stylesheet" href="css/ionicons.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <script languaje="JavaScript" src="js/functions.js"></script>
+    <?php echo '<script'; ?>
+ languaje="JavaScript" src="js/functions.js"><?php echo '</script'; ?>
+>
     
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
@@ -120,23 +146,23 @@
               <!-- Register/Login Tabs-->
               <div class="reg-options">
                 <ul class="nav nav-tabs">
-                  {if isset($register)==1}
+                  <?php if (isset($_smarty_tpl->tpl_vars['register']->value) == 1) {?>
                     <li class="active"><a href="#register" data-toggle="tab">Register</a></li>
                     <li><a href="#login" data-toggle="tab">Login</a></li>
-                  {else}
+                  <?php } else { ?>
                     <li><a href="#register" data-toggle="tab">Register</a></li>
                     <li class="active"><a href="#login" data-toggle="tab">Login</a></li>
-                  {/if}
+                  <?php }?>
                 </ul><!--Tabs End-->
               </div>
               
               <!--Registration Form Contents-->
               <div class="tab-content">
-                {if isset($register)==1}
+                <?php if (isset($_smarty_tpl->tpl_vars['register']->value) == 1) {?>
                   <div class="tab-pane active" id="register">
-                {else}
+                <?php } else { ?>
                   <div class="tab-pane" id="register">
-                {/if}
+                <?php }?>
                   <h3>Register Now !!!</h3>
                   <p class="text-muted">Be cool and join today. Meet millions</p>
                   
@@ -146,7 +172,9 @@
                       <div class="form-group col-xs-6">
                         <input type="hidden" name="check" value="1"/>
                         <label for="firstname" class="sr-only">First Name</label>
-                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="{if isset($name)}{$name}{/if}" required/>
+                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" value="<?php if (isset($_smarty_tpl->tpl_vars['name']->value)) {
+echo $_smarty_tpl->tpl_vars['name']->value;
+}?>" required/>
                       </div>
                       <div class="form-group col-xs-6">
                         <label for="lastname" class="sr-only">Last Name</label>
@@ -162,13 +190,17 @@
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}" required/>
+                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="<?php if (isset($_smarty_tpl->tpl_vars['email']->value)) {
+echo $_smarty_tpl->tpl_vars['email']->value;
+}?>" required/>
                       </div>
                     </div>
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Password</label>
-                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" value="{if isset($password)}{$password}{/if}" required/>
+                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" value="<?php if (isset($_smarty_tpl->tpl_vars['password']->value)) {
+echo $_smarty_tpl->tpl_vars['password']->value;
+}?>" required/>
                       </div>
                     </div>
                     <div class="row">
@@ -183,9 +215,11 @@
                         <label for="day" class="sr-only"></label>
                         <select class="form-control" id="day" name="day">
                           <option value="" disabled selected>Day</option>
-                          <script>
+                          <?php echo '<script'; ?>
+>
                             list_days();
-                          </script>
+                          <?php echo '</script'; ?>
+>
                         </select>
                       </div>
                       <div class="form-group col-sm-3 col-xs-6">
@@ -210,9 +244,11 @@
                         <label for="year" class="sr-only"></label>
                         <select class="form-control" id="year" name="year">
                           <option value="" disabled selected>Year</option>
-                          <script>
+                          <?php echo '<script'; ?>
+>
                             list_years();
-                          </script>
+                          <?php echo '</script'; ?>
+>
                         </select>
                       </div>
                     </div>
@@ -487,7 +523,7 @@
                           <option value="America">America</option>
                           <option value="Africa">Africa</option>
                           <option value="Antartida">Antartida</option>
-                          <option value="Europe">Europe</option>
+                          <option value="Europa">Europa</option>
                           <option value="Oceania">Oceania</option>
                         </select>
                       </div>
@@ -498,11 +534,11 @@
                 </div><!--Registration Form Contents Ends-->
                 
                 <!--Login-->
-                {if isset($register)==1}
+                <?php if (isset($_smarty_tpl->tpl_vars['register']->value) == 1) {?>
                   <div class="tab-pane" id="login">
-                {else}
+                <?php } else { ?>
                   <div class="tab-pane active" id="login">
-                {/if}
+                <?php }?>
                   <h3>Login</h3>
                   <p class="text-muted">Log into your account</p>
                   
@@ -554,13 +590,25 @@
 
     <!-- Scripts
     ================================================= -->
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.appear.min.js"></script>
-		<script src="js/jquery.incremental-counter.js"></script>
-    <script src="js/script.js"></script>
+    <?php echo '<script'; ?>
+ src="js/jquery-3.1.1.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/bootstrap.min.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/jquery.appear.min.js"><?php echo '</script'; ?>
+>
+		<?php echo '<script'; ?>
+ src="js/jquery.incremental-counter.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ src="js/script.js"><?php echo '</script'; ?>
+>
     
 	</body>
 
 <!-- Mirrored from thunder-team.com/friend-finder/index-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Feb 2017 11:16:41 GMT -->
 </html>
+<?php }
+}
