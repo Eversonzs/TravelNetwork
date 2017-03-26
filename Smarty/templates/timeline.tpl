@@ -113,8 +113,8 @@
                     <div class="reaction">
                       <a class="btn text-green"><i class="icon ion-thumbsup"></i> 13</a>
                       <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
-                      {if $smarty_publication.id_user == $smarty.session.id_user}
-                        <a class="btn text-red" href="delete_publication.php?id_publication={$smarty_publication.id_publication}">x</a>
+                      {if $smarty_publication.id_user == $smarty.session.id_user || isset($delete_publication)}
+                        <a class="btn text-red" href="delete_publication.php?id_publication={$smarty_publication.id_publication}&page=timeline">x</a>
                       {/if}
                     </div>
                     <div class="line-divider"></div>
@@ -128,8 +128,8 @@
                           <div class="post-comment">
                             <img src="images/users/{if $smarty_comments.profile_photo}{$smarty_comments.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-sm" />
                             <p><a href="timeline.php?id_user={$smarty_comments.id_user}" class="profile-link">{$smarty_comments.user_name} </a><i class="em em-laughing"></i>{$smarty_comments.comment}</p>
-                            {if $smarty_comments.id_user == $smarty.session.id_user || $smarty_publication.id_user==$smarty.session.id_user}
-                              <a class="btn text-red" href="delete_comments.php?id_comment={$smarty_comments.id_comment}&id_user={$smarty_publication.id_user}">x</a>
+                            {if $smarty_comments.id_user == $smarty.session.id_user || $smarty_publication.id_user==$smarty.session.id_user || isset($delete_comment)}
+                              <a class="btn text-red" href="delete_comments.php?id_comment={$smarty_comments.id_comment}&id_user={$smarty_publication.id_user}&page=timeline">x</a>
                             {/if}
                           </div>
                         {/if}
