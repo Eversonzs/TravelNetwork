@@ -8,7 +8,7 @@ if (!is_logged()){
 
 	$id_user = $_SESSION['id_user'];
 
-	if(!$query = mysqli_query($connection, "SELECT * FROM tbl_publications AS A INNER JOIN tbl_publications_users AS B ON A.id_publication = B.id_publication INNER JOIN tbl_users ON tbl_users.id_user = B.id_user ORDER BY A.publication_date DESC")){
+	if(!$query = mysqli_query($connection, "SELECT * FROM tbl_publications AS A INNER JOIN tbl_publications_users AS B ON A.id_publication = B.id_publication INNER JOIN tbl_users ON tbl_users.id_user = B.id_user INNER JOIN tbl_gallery AS C ON A.id_publication = C.id_publication ORDER BY A.publication_date DESC")){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);

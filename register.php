@@ -66,10 +66,10 @@ include('config/core.php');
 			}
 		} else{
 			if(!mysqli_query($connection, "INSERT INTO tbl_locations (continent, country, city) VALUES ('$continent', '$country', '$city')")){
-			$smarty->assign('message', 'ERROR: SQL error during the lacation registration, try again');
-			$smarty->display('message.tpl');
-			mysqli_close($connection);
-			die();
+				$smarty->assign('message', 'ERROR: SQL error during the location registration, try again');
+				$smarty->display('message.tpl');
+				mysqli_close($connection);
+				die();
 			}
 
 			if(!$query_city = mysqli_query($connection, "SELECT id_location FROM tbl_locations WHERE LOWER(city)=LOWER('$city')")){
@@ -93,6 +93,7 @@ include('config/core.php');
 		}
 
 		$id_user = mysqli_insert_id($connection);
+		
 		if(!mysqli_query($connection, "INSERT INTO tbl_users_groups (id_user, id_group) VALUES ('$id_user','2')")){
 			$smarty->assign('message','ERROR: SQL error during the registration, try again!');
 			$smarty->display('message.tpl');

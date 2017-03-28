@@ -26,34 +26,37 @@
 
             <!-- Post Create Box
             ================================================= -->
-            <div class="create-post">
-              <div class="row">
-                <div class="col-md-7 col-sm-7">
-                  <div class="form-group">
-                    <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-md" />
-                    <textarea name="texts" id="exampleTextarea" cols="30" rows="1" class="form-control" placeholder="Write what you wish"></textarea>
+            <form name="form_publish" id='form_publish' action="insert_publication.php" method="POST">
+              <div class="create-post">
+                <div class="row">
+                  <div class="col-md-7 col-sm-7">
+                    <div class="form-group">
+                      <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-md" />
+                      <textarea name='description' id="description" cols="30" rows="1" class="form-control" placeholder="Share your experience"></textarea>
+                      <input type="hidden" name="page" value="newsfeed"/>
+                    </div>
+                  </div>
+                  <div class="col-md-5 col-sm-5">
+                    <div class="tools">
+                      <ul class="publishing-tools list-inline">
+                        <li><a href="#"><i class="ion-compose"></i></a></li>
+                        <li><a href="#"><i class="ion-images"></i></a></li>
+                        <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
+                        <li><a href="#"><i class="ion-map"></i></a></li>
+                      </ul>
+                      <button class="btn btn-primary pull-right" type="submit">Publish</button>
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-5 col-sm-5">
-                  <div class="tools">
-                    <ul class="publishing-tools list-inline">
-                      <li><a href="#"><i class="ion-compose"></i></a></li>
-                      <li><a href="#"><i class="ion-images"></i></a></li>
-                      <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                      <li><a href="#"><i class="ion-map"></i></a></li>
-                    </ul>
-                    <button class="btn btn-primary pull-right">Publish</button>
-                  </div>
-                </div>
-              </div>
-            </div><!-- Post Create Box End-->
+              </div><!-- Post Create Box End-->
+            </form>
 
             <!-- Post Content
             ================================================= -->
             {if isset($publication)}
               {foreach name=tbl_publications item=smarty_publication from=$publication}   
                 <div class="post-content">
-                  <img src="images/post-images/2.jpg" alt="post-image" class="img-responsive post-image" />
+                  <img src="images/post-images/{$smarty_publication.file}" alt="post-image" class="img-responsive post-image" />
                   <div class="post-container">
                     <img src="images/users/{if $smarty_publication.profile_photo}{$smarty_publication.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="profile-photo-md pull-left" />
                     <div class="post-detail">
@@ -62,8 +65,8 @@
                         <p class="text-muted">{$smarty_publication.publication_date}</p>
                       </div>
                       <div class="reaction">
-                        <a class="btn text-green"><i class="icon ion-thumbsup"></i> 39</a>
-                        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 2</a>
+                        <a class="btn text-green"><i class="icon ion-thumbsup"></i> {$smarty_publication.valuation}</a>
+                        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
                         {if $smarty_publication.id_user == $smarty.session.id_user || isset($delete_publication)}
                           <a class="btn text-red" href="delete_publication.php?id_publication={$smarty_publication.id_publication}&page=newsfeed">x</a>
                         {/if}
@@ -88,10 +91,15 @@
                       {/if}
                       {if isset($user)}
                         {foreach name=tbl_users item=smarty_user from=$user}
-                          <div class="post-comment">
-                            <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" class="profile-photo-sm" />
-                            <input type="text" class="form-control" placeholder="Post a comment">
-                          </div>
+                          <form name="form_comment" id='form_comment' action="insert_comment.php" method="POST">
+                            <div class="post-comment">
+                              <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" class="profile-photo-sm" />
+                              <input type="hidden" name="id_publication" value="{$smarty_publication.id_publication}"/>
+                              <input type="textarea" class="form-control" name="comment" placeholder="Share your opinion"/>
+                              <input type="hidden" name="page" value="newsfeed"/>
+                              <button class="btn btn-comment"><i class="icon ion-android-send"></i></button>
+                            </div>
+                          </form>
                         {/foreach}
                       {/if}
                     </div>
