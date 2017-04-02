@@ -63,6 +63,15 @@
                   <li><a href="timeline-friends.html">Timeline Friends</a></li>
                 </ul>
               </li>
+              {if isset($delete_moderator)}
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manager<span><img src="images/down-arrow.png" alt="" /></span></a>
+                  <ul class="dropdown-menu login">
+                    <li><a href="group_manager.php">Group Manager</a></li>
+                    <li><a href="#">User Manager</a></li>
+                  </ul>
+                </li>
+              {/if}
               <li class="dropdown">
                 <!-- // FORM: logout -->  
                 <a href="logout.php" >Logout</a>

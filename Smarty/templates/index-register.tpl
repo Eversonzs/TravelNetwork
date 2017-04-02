@@ -21,87 +21,7 @@
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
 	</head>
-	<body>
-
-    <!-- Header
-    ================================================= -->
-		<header id="header-inverse">
-      <nav class="navbar navbar-default navbar-fixed-top menu">
-        <div class="container">
-
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index-register.php"><img src="images/logo.png" alt="logo" /></a>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
-                  <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="index.php">Welcome page</a></li>
-                    <li><a href="index-register.php">Register page</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
-                  <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="newsfeed.html">Newsfeed</a></li>
-                    <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                    <li><a href="newsfeed-friends.html">My friends</a></li>
-                    <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                    <li><a href="newsfeed-images.html">Images</a></li>
-                    <li><a href="newsfeed-videos.html">Videos</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt="" /></span></a>
-                <ul class="dropdown-menu login">
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt="" /></span></a>
-                <ul class="dropdown-menu page-list">
-                  <li><a href="index.html">Landing Page 1</a></li>
-                  <li><a href="index-register.html">Landing Page 2</a></li>
-                  <li><a href="newsfeed.html">Newsfeed</a></li>
-                  <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                  <li><a href="newsfeed-friends.html">My friends</a></li>
-                  <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                  <li><a href="newsfeed-images.html">Images</a></li>
-                  <li><a href="newsfeed-videos.html">Videos</a></li>
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="contact.html">Contact</a></li>
-            </ul>
-            <form class="navbar-form navbar-right hidden-sm">
-              <div class="form-group">
-                <i class="icon ion-android-search"></i>
-                <input type="text" class="form-control" placeholder="Search friends, photos, videos">
-              </div>
-            </form>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container -->
-      </nav>
-    </header>
-    <!--Header End-->
-    
+	<body>    
     <!-- Landing Page Contents
     ================================================= -->
     <div id="lp-register">
@@ -109,8 +29,8 @@
         <div class="row">
         	<div class="col-sm-5">
             <div class="intro-texts">
-            	<h1 class="text-white">Make Cool Friends !!!</h1>
-            	<p>Friend Finder is a social network template that can be used to connect people. The template offers Landing pages, News Feed, Image/Video Feed, Chat Box, Timeline and lot more. <br /></p>
+            	<h1 class="text-white">Travel and make cool friends!!</h1>
+            	<p>Travel Network is a social network that can be used to connect people. Shared your experiences about your travels, delicious dishes that you tried, amazing places visited, extraordinary histories and more.<br/></p>
               <button class="btn btn-primary">Learn More</button>
             </div>
           </div>
@@ -138,7 +58,7 @@
                   <div class="tab-pane" id="register">
                 {/if}
                   <h3>Register Now !!!</h3>
-                  <p class="text-muted">Be cool and join today. Meet millions</p>
+                  <p class="text-muted">Be cool and join today.</p>
                   
                   <!--Register Form-->
                   <form name="registration_form" id='registration_form' class="form-inline" action="register.php" method="post">
@@ -162,7 +82,7 @@
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}" required/>
+                        <email id="email" class="form-control input-group-lg" type="email" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}" required/>
                       </div>
                     </div>
                     <div class="row">

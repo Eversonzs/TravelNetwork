@@ -131,9 +131,11 @@
                           <div class="post-comment">
                             <img src="images/users/{if $smarty_comments.profile_photo}{$smarty_comments.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-sm" />
                             <p><a href="timeline.php?id_user={$smarty_comments.id_user}" class="profile-link">{$smarty_comments.user_name} </a><i class="em em-laughing"></i>{$smarty_comments.comment}</p>
-                            {if $smarty_comments.id_user == $smarty.session.id_user || $smarty_publication.id_user==$smarty.session.id_user || isset($delete_comment)}
-                              <a class="btn text-red" href="delete_comments.php?id_comment={$smarty_comments.id_comment}&id_user={$smarty_publication.id_user}&page=timeline">x</a>
-                            {/if}
+                            <div class="delete-comment">
+                              {if $smarty_comments.id_user == $smarty.session.id_user || $smarty_publication.id_user==$smarty.session.id_user || isset($delete_comment)}
+                                <a class="btn text-red" href="delete_comments.php?id_comment={$smarty_comments.id_comment}&id_user={$smarty_publication.id_user}&page=timeline">x</a>
+                              {/if}
+                            </div>
                           </div>
                         {/if}
                       {/foreach}
@@ -144,11 +146,12 @@
                           <input type="hidden" name="id_publication" value="{$smarty_publication.id_publication}"/>
                           <input type="textarea" class="form-control" name="comment" placeholder="Share your opinion"/>
                           <input type="hidden" name="page" value="timeline"/>
+                          <input type="hidden" name="id_user" value="{$smarty_user.id_user}"/>
                           <button class="btn btn-comment" type="submit"><i class="icon ion-android-send"></i></button>
                         </div>
                       </form>
+                    </div>
                   </div>
-                </div>
                 {/foreach}
               {/if}
               </div>
@@ -218,7 +221,7 @@
         </div>
       </div>
       <div class="copyright">
-        <p>Thunder Team © 2016. All rights reserved</p>
+        <p>Travel Network © 2017. All rights reserved</p>
       </div>
     </footer>
     

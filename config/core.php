@@ -30,7 +30,7 @@ $smarty = new Setup_Smarty();
 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
 	}
 
-	session_start(); # conexion iniciada para cualquiera.
+	session_start(); #conexion iniciada para cualquiera.
 
 	function is_logged(){
 	 if(isset($_SESSION['id_user']))

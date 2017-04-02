@@ -161,13 +161,17 @@ section .wrapper{
   border: none !important;
   font-size: 14px;
   color: #27aae1;
-  outline: none;
-  border-radius: 0px;
+  outline: 0 none;
+  border-radius: 50%;
 }
 
 .btn-comment:hover{
   color: blue;
   transition: all 1s;
+}
+
+.btn-comment:active{
+  outline: 0 none;
 }
 
 .btn-secondary{
@@ -1170,7 +1174,13 @@ ul.online-users li span.online-dot{
 .post-content .post-container .post-detail .post-comment{
   display: inline-flex;
   margin: 10px auto;
-  width: 100%;
+  width: 95%;
+}
+
+.post-content .post-container .post-detail .post-comment .delete-comment{
+  width: 5%;
+  position: absolute;
+  right: 0;
 }
 
 .post-content .post-container .post-detail .post-comment img.profile-photo-sm{

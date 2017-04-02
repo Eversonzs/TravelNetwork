@@ -37,63 +37,15 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index-register.php"><img src="images/logo.png" alt="logo" /></a>
+            <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="logo" /></a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right main-menu">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span><img src="images/down-arrow.png" alt="" /></span></a>
-                  <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="index.php">Welcome page</a></li>
-                    <li><a href="index-register.php">Register page</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
-                  <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="newsfeed.html">Newsfeed</a></li>
-                    <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                    <li><a href="newsfeed-friends.html">My friends</a></li>
-                    <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                    <li><a href="newsfeed-images.html">Images</a></li>
-                    <li><a href="newsfeed-videos.html">Videos</a></li>
-                  </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Timeline <span><img src="images/down-arrow.png" alt="" /></span></a>
-                <ul class="dropdown-menu login">
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle pages" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All Pages <span><img src="images/down-arrow.png" alt="" /></span></a>
-                <ul class="dropdown-menu page-list">
-                  <li><a href="index.html">Landing Page 1</a></li>
-                  <li><a href="index-register.html">Landing Page 2</a></li>
-                  <li><a href="newsfeed.html">Newsfeed</a></li>
-                  <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                  <li><a href="newsfeed-friends.html">My friends</a></li>
-                  <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                  <li><a href="newsfeed-images.html">Images</a></li>
-                  <li><a href="newsfeed-videos.html">Videos</a></li>
-                  <li><a href="timeline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
-                  <li><a href="contact.html">Contact Us</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="contact.html">Contact</a></li>
-            </ul>
             <form class="navbar-form navbar-right hidden-sm">
               <div class="form-group">
                 <i class="icon ion-android-search"></i>
-                <input type="text" class="form-control" placeholder="Search friends, photos, videos">
+                <input type="text" class="form-control" placeholder="Search friends, places, experiences">
               </div>
             </form>
           </div><!-- /.navbar-collapse -->
@@ -111,7 +63,7 @@
         ================================================= -->
         <div class="sign-up-form">
 			<a href="index.php" class="logo"><img src="images/logo.png" alt="Friend Finder"/></a>
-			<h2 class="text-white">Find My Friends</h2>
+			<h2 class="text-white">Find friends and travel</h2>
 			<div class="line-divider"></div>
 			<div class="form-wrapper">
 				<p class="signup-text">Signup now and meet awesome people around the world</p>
@@ -166,7 +118,11 @@
 					</div>
 				</div>
 				<h2 class="sub-title">find awesome people like you</h2>
-				<div id="incremental-counter" data-value="101242"></div>
+				{if isset($number_users)}
+             		{foreach name=tbl_users item=smarty_users from=$number_users}
+						<div id="incremental-counter" data-value="{$smarty_users.number_users}"></div>
+					{/foreach}
+				{/if}
 				<p>People Already Signed Up</p>
 				<img src="images/face-map.png" alt="" class="img-responsive face-map slideUp hidden-sm hidden-xs" />
 			</div>
