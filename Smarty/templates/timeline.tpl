@@ -19,7 +19,6 @@
                             <h3>
                               {$smarty_user.name} {$smarty_user.surname}
                             </h3>
-                          <p class="text-muted">Creative Director</p>
                         </div>
                       </div>
                       <div class="col-md-9">
@@ -44,12 +43,11 @@
                   <h4>
                     {$smarty_user.name} {$smarty_user.surname}
                   </h4>
-                  <p class="text-muted">Creative Director</p>
                 </div>
                 <div class="mobile-menu">
                   <ul class="list-inline">
-                    <li><a href="timline.html" class="active">Timeline</a></li>
-                    <li><a href="timeline-about.html">About</a></li>
+                    <li><a href="timeline.php?id_user={$smarty_user.id_user}" class="active">Timeline</a></li>
+                    <li><a href="timeline-about.php?id_user={$smarty_user.id_user}">About</a></li>
                     <li><a href="timeline-album.html">Album</a></li>
                     <li><a href="timeline-friends.html">Friends</a></li>
                   </ul>

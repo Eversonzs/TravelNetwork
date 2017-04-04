@@ -106,22 +106,20 @@
 					</div>
 					<div class="feature-item col-md-2 col-sm-6 col-xs-6">
 						<div class="feature-icon"><i class="icon ion-images"></i></div>
-						<h3>Publish Posts</h3>
+						<h3>Share Experiences</h3>
 					</div>
 					<div class="feature-item col-md-2 col-sm-6 col-xs-6">
 						<div class="feature-icon"><i class="icon ion-chatbox-working"></i></div>
-						<h3>Private Chats</h3>
+						<h3>Share Opinions	</h3>
 					</div>
 					<div class="feature-item col-md-2 col-sm-6 col-xs-6">
-						<div class="feature-icon"><i class="icon ion-compose"></i></div>
-						<h3>Create Polls</h3>
+						<div class="feature-icon"><i class="icon ion-pizza"></i></div>
+						<h3>Know Dishes</h3>
 					</div>
 				</div>
 				<h2 class="sub-title">find awesome people like you</h2>
 				{if isset($number_users)}
-             		{foreach name=tbl_users item=smarty_users from=$number_users}
-						<div id="incremental-counter" data-value="{$smarty_users.number_users}"></div>
-					{/foreach}
+					<div id="incremental-counter" data-value="{$number_users}"></div>
 				{/if}
 				<p>People Already Signed Up</p>
 				<img src="images/face-map.png" alt="" class="img-responsive face-map slideUp hidden-sm hidden-xs" />
@@ -143,13 +141,15 @@
 					<ul class="facts-list">
 						<li>
 							<div class="fact-icon"><i class="icon ion-ios-people-outline"></i></div>
-							<h3 class="text-white">1,01,242</h3>
+							<h3 class="text-white">{if isset($number_users)} {$number_users} {/if}</h3>
 							<p>People registered</p>
 						</li>
 						<li>
-							<div class="fact-icon"><i class="icon ion-images"></i></div>
-							<h3 class="text-white">21,01,242</h3>
-							<p>Posts published</p>
+							{if isset($publishing_number)}
+								<div class="fact-icon"><i class="icon ion-images"></i></div>
+								<h3 class="text-white">{$publishing_number}</h3>
+								<p>Posts published</p>
+							{/if}
 						</li>
 						<li>
 							<div class="fact-icon"><i class="icon ion-checkmark-round"></i></div>
@@ -160,6 +160,7 @@
 				</div>
 			</div>
 		</section>
+
 
     <!-- Live Feed Section
     ================================================= -->

@@ -6,29 +6,47 @@ if (!is_logged()){
 	die(); 
 }
 
-	$id_permissions_admin = $_POST['permission_admin'];
-	$id_permissions_active_user = $_POST['permission_active_user'];
-	$id_permissions_banned_user = $_POST['permission_banned_user'];
-	$id_permissions_moderator = $_POST['permission_moderator'];
+	$id_permissions = $_POST['permissions'];
+	$group = filtra($_POST['group'], $connection);
 
-	echo "ADMIN: ";
-	foreach ($id_permissions_admin as $id_permission_admin) {
-		echo $id_permission_admin . "<br>";
-	}
-
-	echo "ACTIVE_USER: ";
-	foreach ($id_permissions_active_user as $id_permission_active_user) {
-		echo $id_permission_active_user . "<br>";
-	}
-	
-	echo "BANNED_USER: ";
-	foreach ($id_permissions_banned_user as $id_permission_banned_user) {
-		echo $id_permission_banned_user . "<br>";
+	if(!$query_id_group = mysqli_query($connection, "SELECT id_group FROM tbl_groups WHERE tbl_groups.group='$group'")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
 	}
 
-	echo "MODERATOR: ";
-	foreach ($id_permissions_moderator as $id_permission_moderator) {
-		echo $id_permission_moderator . "<br>";
+	if (mysqli_num_rows($query_id_group)>0){
+		while ($row = mysqli_fetch_assoc($query_id_group)){
+			$id_group = $row['id_group'];
+		}
 	}
+
+	if(check_permission($connection, "delete_group")){
+		
+		if(!$query_delete = mysqli_query($connection, "DELETE FROM tbl_permissions_groups WHERE id_group='$id_group'")){
+			$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+			$smarty->display('message.tpl');
+			mysqli_close($connection);
+			die();
+		}
+		
+		foreach ($id_permissions as $permissions) {
+			if(!$query_insert = mysqli_query($connection, "INSERT INTO tbl_permissions_groups(id_permission, id_group) VALUES ('$permissions', '$id_group')")){
+				$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+				$smarty->display('message.tpl');
+				mysqli_close($connection);
+				die();
+			}
+		}
+
+		header('location: group_manager.php?group='."$group".'');
+
+	}
+
+	mysqli_close($connection);
+	die();
+
+	$smarty -> display('group_manager.tpl');
 
 ?>

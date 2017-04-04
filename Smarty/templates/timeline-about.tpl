@@ -18,7 +18,6 @@
                           <h3>
                             {$smarty_user.name} {$smarty_user.surname}
                           </h3>
-                        <p class="text-muted">Creative Director</p>
                       </div>
                     </div>
                     <div class="col-md-9">
@@ -41,12 +40,11 @@
               <div class="profile-info">
                 <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
                 <h4>Sarah Cruiz</h4>
-                <p class="text-muted">Creative Director</p>
               </div>
               <div class="mobile-menu">
                 <ul class="list-inline">
-                  <li><a href="timline.html">Timeline</a></li>
-                  <li><a href="timeline-about.html" class="active">About</a></li>
+                  <li><a href="timeline.php?id_user={$smarty_user.id_user}">Timeline</a></li>
+                  <li><a href="timeline-about.php?id_user={$smarty_user.id_user}" class="active">About</a></li>
                   <li><a href="timeline-album.html">Album</a></li>
                   <li><a href="timeline-friends.html">Friends</a></li>
                 </ul>

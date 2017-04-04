@@ -82,7 +82,7 @@
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="email" class="sr-only">Email</label>
-                        <email id="email" class="form-control input-group-lg" type="email" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}" required/>
+                        <input id="email" class="form-control input-group-lg" type="email" name="Email" title="Enter Email" placeholder="Your Email" value="{if isset($email)}{$email}{/if}" required/>
                       </div>
                     </div>
                     <div class="row">
