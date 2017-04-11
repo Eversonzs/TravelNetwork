@@ -54,6 +54,20 @@ if (!is_logged()){
 		$smarty->assign("comments",$comments);
 	}
 
+	if(!$query_followers = mysqli_query($connection, "SELECT count(*) as followers FROM tbl_friends WHERE id_user='$id_user'")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if (mysqli_num_rows($query_followers)>0){
+		while ($row = mysqli_fetch_assoc($query_followers)){
+			$followers = $row['followers'];
+		}
+		$smarty->assign("followers", $followers);
+	}
+
 	$smarty -> display('newsfeed.tpl');
 	mysqli_close($connection);
 ?>

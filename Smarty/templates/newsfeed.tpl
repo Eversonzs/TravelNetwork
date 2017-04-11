@@ -10,7 +10,7 @@
             <div class="profile-card" style="background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url(images/covers/{if $smarty.session.header_photo}{$smarty.session.header_photo}{else}header_default.jpg{/if}) no-repeat">
               <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="profile-photo" />
               <h5><a href="timeline.php?id_user={$smarty.session.id_user}" class="text-white"> {$smarty.session.user_name} </a></h5>
-              <a href="#" class="text-white"><i class="ion ion-android-person-add"></i> 1,299 followers</a>
+              <a href="#" class="text-white"><i class="ion ion-android-person-add"></i>{if isset($followers)} {$followers} followers {/if}</a>
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
               <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.php">My Newsfeed</a></div></li>
@@ -26,7 +26,8 @@
 
             <!-- Post Create Box
             ================================================= -->
-            <form name="form_publish" id='form_publish' action="insert_publication.php" method="POST">
+            <form name="form_publish" id='form_publish' action="insert_publication.php" method="POST" enctype="multipart/form-data" >
+              <output id="list"> </output>
               <div class="create-post">
                 <div class="row">
                   <div class="col-md-7 col-sm-7">
@@ -40,7 +41,10 @@
                     <div class="tools">
                       <ul class="publishing-tools list-inline">
                         <li><a href="#"><i class="ion-compose"></i></a></li>
-                        <li><a href="#"><i class="ion-images"></i></a></li>
+                        <li><a href="#"><input type="file" id="files" name="image" size="50" class="ion-images"/></a></li>
+                        <script>
+                          document.getElementById('files').addEventListener('change', image, false);
+                        </script>
                         <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
                         <li><a href="#"><i class="ion-map"></i></a></li>
                       </ul>
@@ -61,7 +65,7 @@
                     <img src="images/users/{if $smarty_publication.profile_photo}{$smarty_publication.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="profile-photo-md pull-left" />
                     <div class="post-detail">
                       <div class="user-info">
-                        <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a> <span class="following">following</span></h5>
+                        <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a></h5>
                         <p class="text-muted">{$smarty_publication.publication_date}</p>
                       </div>
                       <div class="reaction">

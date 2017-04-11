@@ -28,8 +28,8 @@
                         <li><a href="timeline-friends.html">Friends</a></li>
                       </ul>
                       <ul class="follow-me list-inline">
-                        <li>1,299 people following her</li>
-                        <li><button class="btn-primary">Add Friend</button></li>
+                        <li>{if isset($followers)} {$followers} people following {/if}</li>
+                        {if $smarty_user.id_user != $smarty.session.id_user}<li>{if $already_following==0}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=follow">Follow</a>{else}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=unfollow">Unfollow</a>{/if}</li>{/if}
                       </ul>
                     </div>
               </div>
@@ -48,7 +48,8 @@
                   <li><a href="timeline-album.html">Album</a></li>
                   <li><a href="timeline-friends.html">Friends</a></li>
                 </ul>
-                <button class="btn-primary">Add Friend</button>
+                <li>{if isset($followers)} {$followers} people following {/if}</li>
+                {if $smarty_user.id_user != $smarty.session.id_user}<li>{if $already_following==0}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=follow">Follow</a>{else}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=unfollow">Unfollow</a>{/if}</li>{/if}
               </div>
             </div><!--Timeline Menu for Small Screens End-->    
           </div>

@@ -7,6 +7,7 @@
 	}
 
 	$id_user = filtra($_GET['id_user'], $connection);
+	$id_user_logged = $_SESSION['id_user'];
 
 	if(!$query = mysqli_query($connection, "SELECT * FROM tbl_publications AS A INNER JOIN tbl_publications_users AS B ON A.id_publication = B.id_publication INNER JOIN tbl_users ON tbl_users.id_user = B.id_user INNER JOIN tbl_gallery AS C ON A.id_publication = C.id_publication WHERE B.id_user = '$id_user' ORDER BY A.publication_date DESC")){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
@@ -54,7 +55,35 @@
 		$smarty->assign("comments",$comments);
 	}
 
-	
+	if(!$query_followers = mysqli_query($connection, "SELECT count(*) as followers FROM tbl_friends WHERE id_user='$id_user'")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if (mysqli_num_rows($query_followers)>0){
+		while ($row = mysqli_fetch_assoc($query_followers)){
+			$followers = $row['followers'];
+		}
+		$smarty->assign("followers", $followers);
+	}
+
+	if(!$query_already_following = mysqli_query($connection, "SELECT count(*) as already_following FROM tbl_friends WHERE id_user='$id_user' AND id_friend='$id_user_logged'")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if (mysqli_num_rows($query_already_following)>0){
+		while ($row = mysqli_fetch_assoc($query_already_following)){
+			$already_following = $row['already_following'];
+		}
+	} else{
+		$already_following = 0;
+	}
+	$smarty->assign("already_following", $already_following);
 
 	$smarty -> display('timeline.tpl');
 	mysqli_close($connection);

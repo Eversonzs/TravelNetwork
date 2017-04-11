@@ -29,8 +29,8 @@
                           <li><a href="timeline-friends.html">Friends</a></li>
                         </ul>
                         <ul class="follow-me list-inline">
-                          <li>1,299 people following her</li>
-                          <li><button class="btn-primary">Add Friend</button></li>
+                          <li>{if isset($followers)} {$followers} people following {/if}</li>
+                          {if $smarty_user.id_user != $smarty.session.id_user}<li>{if $already_following==0}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=follow">Follow</a>{else}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=unfollow">Unfollow</a>{/if}</li>{/if}
                         </ul>
                       </div>
                 </div>
@@ -51,7 +51,8 @@
                     <li><a href="timeline-album.html">Album</a></li>
                     <li><a href="timeline-friends.html">Friends</a></li>
                   </ul>
-                  <button class="btn-primary">Add Friend</button>
+                  <li>{if isset($followers)} {$followers} people following {/if}</li>
+                  {if $smarty_user.id_user != $smarty.session.id_user}<li>{if $already_following==0}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=follow">Follow</a>{else}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=unfollow">Unfollow</a>{/if}</li>{/if}
                 </div>
               </div><!--Timeline Menu for Small Screens End-->
 
@@ -108,7 +109,7 @@
                   <img src="images/users/{if $smarty_publication.profile_photo}{$smarty_publication.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="profile-photo-md pull-left" />
                   <div class="post-detail">
                     <div class="user-info">
-                      <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a> <span class="following">following</span></h5>
+                      <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a></h5>
                       <p class="text-muted">{$smarty_publication.publication_date}</p>
                     </div>
                     <div class="reaction">
