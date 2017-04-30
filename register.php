@@ -47,6 +47,7 @@ include('config/core.php');
 		$user_name = filtra($_POST['username'], $connection);
 		$email = filtra($_POST['Email'], $connection);
 		$user_password = filtra($_POST['password'], $connection);
+		$password_encrypted = sha1(md5($user_password));
 		$cellphone = filtra($_POST['cellphone'], $connection);
 		$born_date = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
 
@@ -85,7 +86,7 @@ include('config/core.php');
 				}
 			}
 		}
-		if(!mysqli_query($connection, "INSERT INTO tbl_users (user_name, user_password, name, surname, email, cellphone, id_location, born_date, signup_date) VALUES ('$user_name','$user_password','$name', '$surname', '$email', '$cellphone', '$id_location', '$born_date', DATE_FORMAT(NOW(),'%Y-%c-%d'))")){
+		if(!mysqli_query($connection, "INSERT INTO tbl_users (user_name, user_password, name, surname, email, cellphone, id_location, born_date, signup_date) VALUES ('$user_name','$password_encrypted','$name', '$surname', '$email', '$cellphone', '$id_location', '$born_date', DATE_FORMAT(NOW(),'%Y-%c-%d'))")){
 			$smarty->assign('message','ERROR: SQL error during the registration, try again! ');
 			$smarty->display('message.tpl');
 			mysqli_close($connection);

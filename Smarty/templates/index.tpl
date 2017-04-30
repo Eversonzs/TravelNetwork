@@ -315,7 +315,7 @@
       	</div>
       </div>
       <div class="copyright">
-        <p>copyright @thunder-team 2016. All rights reserved</p>
+        <p>Travel Network © 2017. All rights reserved</p>
       </div>
 		</footer>
 
@@ -334,5 +334,4 @@
     
 	</body>
 
-<!-- Mirrored from thunder-team.com/friend-finder/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Feb 2017 11:16:50 GMT -->
 </html>

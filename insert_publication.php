@@ -63,31 +63,38 @@
 
 		///End upload image
 
-		if(!$query_insert = mysqli_query($connection, "INSERT INTO tbl_publications(id_location, description, publication_date, valuation, address) VALUES(1, '$description_publication', DATE_FORMAT(NOW(),'%Y-%c-%d'), 0, 'L\'Aquila')")){
-			$smarty->assign('message', 'ERROR: SQL error trying to publish. ' .mysqli_error($connection));
+		if(isset($image_name) == ""){
+			$smarty->assign('message', 'ERROR: You have to upload an image with the publication.');
 			$smarty->display('message.tpl');
 			mysqli_close($connection);
 			die();
-		} 
-
-		$id_publication = mysqli_insert_id($connection);
-
-		if(!$query_user_publication = mysqli_query($connection, "INSERT INTO tbl_publications_users(id_publication, id_user) VALUES('$id_publication', '$id_user')")){
+		}else{
+			if(!$query_insert = mysqli_query($connection, "INSERT INTO tbl_publications(id_location, description, publication_date, valuation, address) VALUES(1, '$description_publication', DATE_FORMAT(NOW(),'%Y-%c-%d'), 0, 'L\'Aquila')")){
 				$smarty->assign('message', 'ERROR: SQL error trying to publish. ' .mysqli_error($connection));
 				$smarty->display('message.tpl');
 				mysqli_close($connection);
 				die();
 			}
 
-		if(!mysqli_query($connection, "INSERT INTO tbl_gallery (id_publication, file) VALUES('$id_publication','$image_name')")){
-			$smarty->assign('message','ERROR: Error uploading image, failed to save to database.');
-			$smarty->display('message.tpl');
-			mysql_close($connection);
-			die();
+			$id_publication = mysqli_insert_id($connection);
+
+			if(!$query_user_publication = mysqli_query($connection, "INSERT INTO tbl_publications_users(id_publication, id_user) VALUES('$id_publication', '$id_user')")){
+					$smarty->assign('message', 'ERROR: SQL error trying to publish. ' .mysqli_error($connection));
+					$smarty->display('message.tpl');
+					mysqli_close($connection);
+					die();
+				}
+
+			if(!mysqli_query($connection, "INSERT INTO tbl_gallery (id_publication, file) VALUES('$id_publication','$image_name')")){
+				$smarty->assign('message','ERROR: Error uploading image, failed to save to database.');
+				$smarty->display('message.tpl');
+				mysql_close($connection);
+				die();
+			}
 		}
 
 	} else{
-		$smarty->assign('message','ERROR: You are not enable to publish! '.mysqli_error($connection));
+		$smarty->assign('message','ERROR: You are not enable to publish or the publication is empty! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();

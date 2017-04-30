@@ -17,8 +17,9 @@ include('config/core.php');
 
 		$email = filtra( $_POST['Email'], $connection);
 		$password = filtra( $_POST['password'], $connection);
+		$password_encrypted = sha1(md5($password));
 
-		$query = "SELECT * FROM tbl_users WHERE email='$email' and user_password='$password'";
+		$query = "SELECT * FROM tbl_users WHERE email='$email' and user_password='$password_encrypted'";
 
 		if(!$result = mysqli_query($connection, $query)){
 			$smarty->assign("message","ERROR: SQL error during the registration, try again! " . mysqli_error($connection));

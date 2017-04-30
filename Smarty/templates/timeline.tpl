@@ -25,11 +25,11 @@
                         <ul class="list-inline profile-menu">
                           <li><a href="timeline.php?id_user={$smarty_user.id_user}" class="active">Timeline</a></li>
                           <li><a href="timeline-about.php?id_user={$smarty_user.id_user}">About</a></li>
-                          <li><a href="timeline-album.html">Album</a></li>
-                          <li><a href="timeline-friends.html">Friends</a></li>
+                          <li><a href="timeline-followers.php?id_user={$smarty_user.id_user}">Followers</a></li>
+                          <li><a href="timeline-following.php?id_user={$smarty_user.id_user}">Following</a></li>
                         </ul>
                         <ul class="follow-me list-inline">
-                          <li>{if isset($followers)} {$followers} people following {/if}</li>
+                          <li>{if isset($followers)} {$followers} followers {/if}</li>
                           {if $smarty_user.id_user != $smarty.session.id_user}<li>{if $already_following==0}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=follow">Follow</a>{else}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=unfollow">Unfollow</a>{/if}</li>{/if}
                         </ul>
                       </div>
@@ -48,10 +48,10 @@
                   <ul class="list-inline">
                     <li><a href="timeline.php?id_user={$smarty_user.id_user}" class="active">Timeline</a></li>
                     <li><a href="timeline-about.php?id_user={$smarty_user.id_user}">About</a></li>
-                    <li><a href="timeline-album.html">Album</a></li>
-                    <li><a href="timeline-friends.html">Friends</a></li>
+                    <li><a href="timeline-followers.php?id_user={$smarty_user.id_user}">Followers</a></li>
+                    <li><a href="timeline-following.php?id_user={$smarty_user.id_user}">Following</a></li>
                   </ul>
-                  <li>{if isset($followers)} {$followers} people following {/if}</li>
+                  <li>{if isset($followers)} {$followers} followers {/if}</li>
                   {if $smarty_user.id_user != $smarty.session.id_user}<li>{if $already_following==0}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=follow">Follow</a>{else}<a class="btn-primary" href="friendship.php?id_user={$smarty_user.id_user}&follow=unfollow">Unfollow</a>{/if}</li>{/if}
                 </div>
               </div><!--Timeline Menu for Small Screens End-->

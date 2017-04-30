@@ -59,8 +59,8 @@
                 <ul class="dropdown-menu login">
                   <li><a href="timeline.php?id_user={$smarty.session.id_user}">Timeline</a></li>
                   <li><a href="timeline-about.php?id_user={$smarty.session.id_user}">Timeline About</a></li>
-                  <li><a href="timeline-album.html">Timeline Album</a></li>
-                  <li><a href="timeline-friends.html">Timeline Friends</a></li>
+                  <li><a href="timeline-followers.php?id_user={$smarty.session.id_user}">Timeline Followers</a></li>
+                  <li><a href="timeline-following.php?id_user={$smarty.session.id_user}">Timeline Following </a></li>
                 </ul>
               </li>
               {if isset($delete_moderator)}

@@ -51,18 +51,18 @@
 	}
 	$smarty->assign("user",$user);
 
-	if(!$query_followers = mysqli_query($connection, "SELECT count(*) as followers FROM tbl_friends WHERE id_user='$id_user'")){
+	if(!$query_followers_number = mysqli_query($connection, "SELECT count(*) as followers FROM tbl_friends WHERE id_user='$id_user'")){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();
 	}
 
-	if (mysqli_num_rows($query_followers)>0){
-		while ($row = mysqli_fetch_assoc($query_followers)){
-			$followers = $row['followers'];
+	if (mysqli_num_rows($query_followers_number)>0){
+		while ($row = mysqli_fetch_assoc($query_followers_number)){
+			$followers_number = $row['followers'];
 		}
-		$smarty->assign("followers", $followers);
+		$smarty->assign("followers_number", $followers_number);
 	}
 
 	if(!$query_already_following = mysqli_query($connection, "SELECT count(*) as already_following FROM tbl_friends WHERE id_user='$id_user' AND id_friend='$id_user_logged'")){
@@ -81,6 +81,19 @@
 	}
 	$smarty->assign("already_following", $already_following);
 
+	if(!$query_following = mysqli_query($connection, "SELECT * FROM tbl_friends INNER JOIN tbl_users ON tbl_friends.id_user = tbl_users.id_user WHERE tbl_friends.id_friend='$id_user'")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
 
-	$smarty -> display('timeline-about.tpl');
+	if (mysqli_num_rows($query_following)>0){
+		while ($row = mysqli_fetch_assoc($query_following)){
+			$following[] = $row;
+		}
+		$smarty->assign("following", $following);
+	}
+
+	$smarty -> display('timeline-following.tpl');
 ?>
