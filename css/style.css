@@ -55,6 +55,17 @@ body{
 	font-size: 12px;
 }
 
+label {
+   cursor: pointer;
+   /* Style as you please, it will become the visible UI component. */
+}
+
+.file{
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+}
+
 .image-preload {
   height: 300px;
   border: 1px solid #000;

@@ -430,10 +430,10 @@
 
                   {else}
                     <div class="about-content-block">
-                      <h4 class="blue"><i class="ion-ios-information"></i>  Personal Information</h4>
+                      <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information</h4>
                         <ul class="contact">
-                          <li><i class="icon ion-person"></i>Name: {$smarty_user.name} {$smarty_user.surname}</li>
-                          <li><i class="icon ion-at"></i>Nickname: {$smarty_user.user_name}</li>
+                          <li><i class="icon ion-person"></i>Name:<blockquote>{$smarty_user.name} {$smarty_user.surname}</li>
+                          <li><i class="icon ion-at"></i>Nickname:<blockquote>{$smarty_user.user_name}</li>
                           <li><i class="icon ion-ios-email"></i>Email: {$smarty_user.email}</li>
                           <li><i class="icon ion-android-call"></i>Cellphone: {$smarty_user.cellphone}</li>
                           <li><i class="icon ion-location"></i>Location: {$smarty_user.continent}, {$smarty_user.country}, {$smarty_user.city}</li>

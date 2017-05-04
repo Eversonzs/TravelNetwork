@@ -41,7 +41,7 @@
                     <div class="tools">
                       <ul class="publishing-tools list-inline">
                         <li><a href="#"><i class="ion-compose"></i></a></li>
-                        <li><a href="#"><input type="file" id="files" name="image" size="50" class="ion-images"/></a></li>
+                        <li><a href="#"><label for="files"  class="ion-images"></label><input type="file" id="files" name="image" size="50" class="file" /></a></li>
                         <script>
                           document.getElementById('files').addEventListener('change', image, false);
                         </script>

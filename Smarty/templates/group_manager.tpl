@@ -27,7 +27,7 @@
                       <ul class="nav navbar-nav navbar-left main-menu">
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Group Permissions <span><img src="images/down-arrow.png" alt="" /></span></a>
-                            <ul class="dropdown-menu newsfeed-home">
+                            <ul class="dropdown-menu newsfeed-home" style="list-style:none">
                               {if isset($groups)}
                                 {foreach name=tbl_groups item=smarty_groups from=$groups}
                                   <li><a href="group_manager.php?group={$smarty_groups.group}">{$smarty_groups.group}</a></li>

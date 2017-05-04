@@ -38,7 +38,7 @@
             <div class="navbar-mobile hidden-lg hidden-md">
               <div class="profile-info">
                 <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" />
-                <h4>Sarah Cruiz</h4>
+                <h4>{$smarty_user.name} {$smarty_user.surname}</h4>
               </div>
               <div class="mobile-menu">
                 <ul class="list-inline">
@@ -55,7 +55,6 @@
         {/foreach}
       {/if}
 
-        </div>
         <div id="page-contents">
           <div class="row">
             <div class="col-md-3"></div>
@@ -118,6 +117,7 @@
         </div>
       </div>
     </div>
+  </div>
 
 
     <!-- Footer
