@@ -31,7 +31,7 @@
 				die();
 		    }
 
-		    if (file_exists('post-images/'.$_FILES['image']['name'])) {
+		    if (file_exists('images/post-images/'.$_FILES['image']['name'])) {
 		            $smarty->assign('message','ERROR: File already exists in the directory, rename it and try again.');
 					$smarty->display('message.tpl');
 					mysql_close($connection);

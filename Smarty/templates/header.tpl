@@ -9,18 +9,26 @@
     <meta name="robots" content="index" />
     <title>Travel Network</title>
 
+
+    <script src="js/jquery-3.1.1.min.js"></script>
     <!-- Stylesheets
     ================================================= -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/ionicons.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link href="css/emoji.css" rel="stylesheet">
-    <script languaje="JavaScript" src="js/functions.js"></script>
-    
+    <link rel="stylesheet" href="css/rating.css" />
+    <link href="css/emoji.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/functions.js"></script>
+
+
+
     <!--Favicon-->
     <link rel="shortcut icon" type="image/png" href="images/fav.png"/>
-</head>  
+
+    <script type="text/javascript" src="js/stars.js"></script>
+
+</head>
 
 
    <!-- Header

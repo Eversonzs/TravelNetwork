@@ -60,18 +60,10 @@ label {
    /* Style as you please, it will become the visible UI component. */
 }
 
-.file{
-   opacity: 0;
-   position: absolute;
-   z-index: -1;
+blockquote{
+  font-size: 14px;
+  font-weight: normal;
 }
-
-.image-preload {
-  height: 300px;
-  border: 1px solid #000;
-  margin: 10px 5px 0 0;
-}
-
 
 /*==================================================
   Typography
@@ -210,6 +202,12 @@ section .wrapper{
 
 section img{
 	margin: auto;
+}
+
+img.image-preload {
+  height: 300px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0;
 }
 
 img.profile-photo{
@@ -1144,6 +1142,11 @@ ul.online-users li span.online-dot{
   color: #27aae1;
 }
 
+.create-post .tools ul.publishing-tools li a input.file{
+   opacity: 0;
+   position: absolute;
+   z-index: -1;
+}
 
 /*==================================================
   Post Contents CSS
@@ -1175,6 +1178,15 @@ ul.online-users li span.online-dot{
 .post-content .post-container .post-detail{
   margin-left: 65px;
   position: relative;
+}
+
+.post-content .post-container .post-detail .right{
+  float: right;
+  font-size: 1.5em;
+}
+
+.post-content .post-container .post-detail .right .yellow{
+  color: #FFD700;
 }
 
 .post-content .post-container .post-detail .post-text{

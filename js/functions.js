@@ -34,3 +34,10 @@ function image(evt) {
        reader.readAsDataURL(f);
    }
 }
+
+function edit_information(show){
+    if(show==1)
+      document.getElementById("registration_form").style.display="none";
+    else
+      document.getElementById("registration_form").style.display="block";
+}

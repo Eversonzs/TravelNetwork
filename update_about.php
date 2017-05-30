@@ -28,6 +28,8 @@ include('config/core.php');
 		$country = $_POST['country'];
 		$continent = $_POST['continent'];
 
+		$about_me = filtra($_POST['about_me'],$connection);
+
 		if(!$query_city = mysqli_query($connection, "SELECT id_location FROM tbl_locations WHERE LOWER(city)=LOWER('$city')")){
 			$smarty->assign('message','ERROR: SQL error, try again! '.mysql_error());
 			$smarty->display('message.tpl');
@@ -60,7 +62,7 @@ include('config/core.php');
 			}
 		}
 		
-		if(!mysqli_query($connection, "UPDATE tbl_users SET user_name='$user_name', user_password='$user_password', name='$name', surname='$surname', email='$email', cellphone='$cellphone', id_location='$id_location', born_date='$born_date' WHERE id_user='$id_user'")){
+		if(!mysqli_query($connection, "UPDATE tbl_users SET user_name='$user_name', user_password='$user_password', name='$name', surname='$surname', email='$email', cellphone='$cellphone', id_location='$id_location', born_date='$born_date', about_me='$about_me' WHERE id_user='$id_user'")){
 			$smarty->assign('message','ERROR: SQL error updating data, try again! ' .mysqli_error($connection));
 			$smarty->display('message.tpl');
 			mysqli_close($connection);

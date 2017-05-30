@@ -41,7 +41,7 @@
                     <div class="tools">
                       <ul class="publishing-tools list-inline">
                         <li><a href="#"><i class="ion-compose"></i></a></li>
-                        <li><a href="#"><label for="files"  class="ion-images"></label><input type="file" id="files" name="image" size="50" class="file" /></a></li>
+                        <li><a href="#"><label for="files" class="ion-images"></label><input type="file" id="files" name="image" size="50" class="file" /></a></li>
                         <script>
                           document.getElementById('files').addEventListener('change', image, false);
                         </script>
@@ -58,19 +58,17 @@
             <!-- Post Content
             ================================================= -->
             {if isset($publication)}
-              {foreach name=tbl_publications item=smarty_publication from=$publication}   
+              {foreach name=tbl_publications item=smarty_publication from=$publication}
                 <div class="post-content">
-                  <img src="images/post-images/{$smarty_publication.file}" alt="post-image" class="img-responsive post-image" />
                   <div class="post-container">
                     <img src="images/users/{if $smarty_publication.profile_photo}{$smarty_publication.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="profile-photo-md pull-left" />
                     <div class="post-detail">
                       <div class="user-info">
                         <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a></h5>
                         <p class="text-muted">{$smarty_publication.publication_date}</p>
+
                       </div>
                       <div class="reaction">
-                        <a class="btn text-green"><i class="icon ion-thumbsup"></i> {$smarty_publication.valuation}</a>
-                        <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
                         {if $smarty_publication.id_user == $smarty.session.id_user || isset($delete_publication)}
                           <a class="btn text-red" href="delete_publication.php?id_publication={$smarty_publication.id_publication}&page=newsfeed">x</a>
                         {/if}
@@ -79,6 +77,45 @@
                       <div class="post-text">
                         <p>{$smarty_publication.description}</p>
                       </div>
+                      <div class="line-divider"></div>
+
+                      <div class="right">
+                        <fieldset  class="rating">
+                          <input class="stars" type="radio" id="star_average" name="rating"/>
+                          <label class = "yellow" for="star_average" >
+                            {if isset($average)}
+                              {foreach name=tbl_valuations item=smarty_average from=$average}
+                                {if $smarty_average.id_publication == $smarty_publication.id_publication} {$smarty_average.average} {/if}
+                              {/foreach}
+                            {/if}
+                          </label>
+                        </fieldset>
+                      </div>
+
+                      <img src="images/post-images/{$smarty_publication.file}" alt="post-image" class="img-responsive post-image" />
+                      
+                      <fieldset id='demo1_{$smarty_publication.id_publication}' class="rating">
+                        {if isset($my_valuations)}
+                          {foreach name=tbl_valuations item=smarty_my_valuations from=$my_valuations}
+                            {if $smarty_publication.id_publication == $smarty_my_valuations.id_publication}
+                              <script type="text/javascript">
+                                paint_stars({$smarty_publication.id_publication}, {$smarty_my_valuations.valuation}, 'demo1_{$smarty_publication.id_publication}');
+                              </script>
+                            {/if}
+                          {/foreach}
+                        {/if}
+                        <input class="stars" type="radio" id="star5" name="rating" value="5" />
+                        <label class = "full" id="label5_{$smarty_publication.id_publication}" for="star5" title="Awesome - 5 stars" value="5" onclick="get_id_publication({$smarty_publication.id_publication},5, 'demo1_{$smarty_publication.id_publication}')"></label>
+                        <input class="stars" type="radio" id="star4" name="rating" value="4" />
+                        <label class = "full" id="label4_{$smarty_publication.id_publication}" for="star4" title="Pretty good - 4 stars" onclick="get_id_publication({$smarty_publication.id_publication},4, 'demo1_{$smarty_publication.id_publication}')"></label>
+                        <input class="stars" type="radio" id="star3" name="rating" value="3" />
+                        <label class = "full" id="label3_{$smarty_publication.id_publication}" for="star3" title="Meh - 3 stars" onclick="get_id_publication({$smarty_publication.id_publication},3, 'demo1_{$smarty_publication.id_publication}')"></label>
+                        <input class="stars" type="radio" id="star2" name="rating" value="2" />
+                        <label class = "full" id="label2_{$smarty_publication.id_publication}" for="star2" title="Kinda bad - 2 stars" onclick="get_id_publication({$smarty_publication.id_publication},2, 'demo1_{$smarty_publication.id_publication}')"></label>
+                        <input class="stars" type="radio" id="star1" name="rating" value="1" />
+                        <label class = "full" id="label1_{$smarty_publication.id_publication}" for="star1" title="Sucks big time - 1 star" onclick="get_id_publication({$smarty_publication.id_publication},1, 'demo1_{$smarty_publication.id_publication}')"></label>
+                      </fieldset>
+                      
                       <div class="line-divider"></div>
                       {if isset($comments)}
                         {foreach name=tbl_comments item=smarty_comments from=$comments}
@@ -109,6 +146,7 @@
                           </form>
                         {/foreach}
                       {/if}
+                      <div class="line-divider"></div>
                     </div>
                   </div>
                 </div>
@@ -192,11 +230,12 @@
     <!--
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTMXfmDn0VlqWIyoOxK8997L-amWbUPiQ&amp;callback=initMap"></script>
     -->
-    <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.sticky-kit.min.js"></script>
     <script src="js/jquery.scrollbar.min.js"></script>
     <script src="js/script.js"></script>
+  
+
   </body>
 
 <!-- Mirrored from thunder-team.com/friend-finder/newsfeed.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Feb 2017 11:16:58 GMT -->

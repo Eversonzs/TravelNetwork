@@ -67,40 +67,41 @@
                 {if isset($user)}
                   {foreach name=tbl_users item=smarty_user from=$user}
                     {if $smarty_user.id_user == $smarty.session.id_user}
-                      <form name="registration_form" id='registration_form' class="form-inline" action="update_about.php" method="post">      
+                      <form name="registration_form" id='registration_form' class="form-inline" action="update_about.php" method="post" hidden="true">      
                         <div class="row">
+                        <p class="birth"><strong>Personal Information</strong></p>
                           <div class="form-group col-xs-6">
                             <input type="hidden" name="check" value="1"/>
                             <label for="firstname" class="sr-only">First Name</label>
-                            <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" value="{$smarty_user.name}" required/>
+                            <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="Enter your first name" value="{$smarty_user.name}" required/>
                           </div>
                           <div class="form-group col-xs-6">
                             <label for="lastname" class="sr-only">Last Name</label>
-                            <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" value="{$smarty_user.surname}" required/>
+                            <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Enter your lastname" value="{$smarty_user.surname}" required/>
                           </div>
                         </div>
                         <div class="row">
                           <div class="form-group col-xs-12">
                             <label for="username" class="sr-only">Username</label>
-                            <input id="username" class="form-control input-group-lg" type="text" name="username" title="Enter an username" value="{$smarty_user.user_name}" required/>
+                            <input id="username" class="form-control input-group-lg" type="text" name="username" title="Enter an username" placeholder="Enter a username" value="{$smarty_user.user_name}" required/>
                           </div>
                         </div>
                         <div class="row">
                           <div class="form-group col-xs-12">
                             <label for="email" class="sr-only">Email</label>
-                            <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email"  value="{$smarty_user.email}" required/>
+                            <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Enter your email" value="{$smarty_user.email}" required/>
                           </div>
                         </div>
                         <div class="row">
                           <div class="form-group col-xs-12">
                             <label for="password" class="sr-only">Password</label>
-                            <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password"  value="{$smarty_user.user_password}" required/>
+                            <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Enter your password" value="{$smarty_user.user_password}" required/>
                           </div>
                         </div>
                         <div class="row">
                           <div class="form-group col-xs-12">
                             <label for="cellphone" class="sr-only">Cellphone</label>
-                            <input id="cellphone" class="form-control input-group-lg" type="text" name="cellphone" title="Enter your cellphone number" value="{$smarty_user.cellphone}" required/>
+                            <input id="cellphone" class="form-control input-group-lg" type="text" name="cellphone" title="Enter your cellphone number" placeholder="Enter your cellphone number" value="{$smarty_user.cellphone}" required/>
                           </div>
                         </div>
                         <div class="row">
@@ -149,7 +150,7 @@
                           <p class="birth"><strong>Location</strong></p>
                           <div class="form-group col-xs-12">
                             <label for="city" class="sr-only">city</label>
-                            <input id="city" class="form-control input-group-lg reg_name" type="text" name="city" title="Enter city" value="{$smarty_user.city}" required/>
+                            <input id="city" class="form-control input-group-lg reg_name" type="text" placeholder="Enter city" name="city" title="Enter city" value="{$smarty_user.city}" required/>
                           </div>
                         </div>
                         <div class="row">
@@ -423,48 +424,33 @@
                             </select>
                           </div>
                         </div>
+                        <div class="row">
+                          <p class="birth"><strong>About Me</strong></p>
+                          <div class="form-group col-xs-12">
+                            <label for="about_me" class="sr-only">about</label>
+                            <input id="about_me" class="form-control input-group-lg reg_name" type="text" placeholder="About me..." name="about_me" title="About me" value="{$smarty_user.about_me}" />
+                          </div>
+                        </div>
                         
                         <button type='submit' class="btn btn-primary" >Update</button>
                        
                       </form><!--Register Now Form Ends-->
-
-                  {else}
+                    {/if}
+                    
                     <div class="about-content-block">
-                      <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information</h4>
+                      <div>
+                          <h4 class="grey"><i class="ion-ios-information-outline icon-in-title"></i>Personal Information {if $smarty_user.id_user == $smarty.session.id_user} <button class="btn btn-default pull-right" id="edit_information" value="edit information" style="float: right;" onclick="edit_information(0)"><i class="ion-edit"></i></button>{/if}</h4>
+                      </div>
                         <ul class="contact">
-                          <li><i class="icon ion-person"></i>Name:<blockquote>{$smarty_user.name} {$smarty_user.surname}</li>
-                          <li><i class="icon ion-at"></i>Nickname:<blockquote>{$smarty_user.user_name}</li>
-                          <li><i class="icon ion-ios-email"></i>Email: {$smarty_user.email}</li>
-                          <li><i class="icon ion-android-call"></i>Cellphone: {$smarty_user.cellphone}</li>
-                          <li><i class="icon ion-location"></i>Location: {$smarty_user.continent}, {$smarty_user.country}, {$smarty_user.city}</li>
-                          <li><i class="icon ion-calendar"></i>Born date: {$smarty_user.month_born} {$smarty_user.day_born}, {$smarty_user.year_born}</li>
-                          <li><i class="icon ion-calendar"></i>With us since: {$smarty_user.signup_date}</li>
-                          <li><i class="icon ion-ios-information-outline"></i>About me: {$smarty_user.about_me}</li>
+                          <li><i class="icon ion-person"></i>Name:<blockquote><p>{$smarty_user.name} {$smarty_user.surname}</p></li>
+                          <li><i class="icon ion-at"></i>Nickname:<blockquote><p>{$smarty_user.user_name}</p></li>
+                          <li><i class="icon ion-ios-email"></i>Email: <blockquote>{$smarty_user.email}</li>
+                          <li><i class="icon ion-android-call"></i>Cellphone: <blockquote>{$smarty_user.cellphone}</li>
+                          <li><i class="icon ion-location"></i>Location: <blockquote>{$smarty_user.continent}, {$smarty_user.country}, {$smarty_user.city}</li>
+                          <li><i class="icon ion-calendar"></i>Born date: <blockquote>{$smarty_user.month_born} {$smarty_user.day_born}, {$smarty_user.year_born}</li>
+                          <li><i class="icon ion-calendar"></i>With us since: <blockquote>{$smarty_user.signup_month} {$smarty_user.signup_day}, {$smarty_user.signup_year}</li>
+                          <li><i class="icon ion-ios-information-outline"></i>About me: <blockquote>{$smarty_user.about_me}</li>
                         </ul>
-                    </div>
-                    <div class="about-content-block">
-                      <h4 class="grey"><i class="ion-ios-briefcase-outline icon-in-title"></i>Work Experiences</h4>
-                      <div class="organization">
-                        <img src="images/envato.png" alt="" class="pull-left img-org" />
-                        <div class="work-info">
-                          <h5>Envato</h5>
-                          <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
-                        </div>
-                      </div>
-                      <div class="organization">
-                        <img src="images/envato.png" alt="" class="pull-left img-org" />
-                        <div class="work-info">
-                          <h5>Envato</h5>
-                          <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
-                        </div>
-                      </div>
-                      <div class="organization">
-                        <img src="images/envato.png" alt="" class="pull-left img-org" />
-                        <div class="work-info">
-                          <h5>Envato</h5>
-                          <p>Seller - <span class="text-grey">1 February 2013 to present</span></p>
-                        </div>
-                      </div>
                     </div>
                     <div class="about-content-block">
                       <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Location</h4>
@@ -491,7 +477,6 @@
                           <li><a href="#">English</a></li>
                         </ul>
                     </div>
-                    {/if}
                   {/foreach}
                 {/if}
               </div>

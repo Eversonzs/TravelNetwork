@@ -8,18 +8,19 @@ if (!is_logged()){
 
 	$id_user = $_SESSION['id_user'];
 
-	if(!$query = mysqli_query($connection, "SELECT * FROM tbl_publications AS A INNER JOIN tbl_publications_users AS B ON A.id_publication = B.id_publication INNER JOIN tbl_users ON tbl_users.id_user = B.id_user INNER JOIN tbl_gallery AS C ON A.id_publication = C.id_publication ORDER BY A.publication_date DESC")){
+
+	if(!$query_publication = mysqli_query($connection, "SELECT * FROM tbl_friends INNER JOIN tbl_users ON tbl_friends.id_user = tbl_users.id_user  INNER JOIN tbl_publications_users ON tbl_publications_users.id_user = tbl_users.id_user INNER JOIN tbl_publications ON tbl_publications.id_publication = tbl_publications_users.id_publication INNER JOIN tbl_gallery ON tbl_gallery.id_publication = tbl_publications.id_publication WHERE tbl_friends.id_friend='$id_user' ORDER BY tbl_publications.publication_date DESC")){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();
 	}
 
-	if (mysqli_num_rows($query)>0){
-		while ($row = mysqli_fetch_assoc($query)){
+	if (mysqli_num_rows($query_publication)>0){
+		while ($row = mysqli_fetch_assoc($query_publication)){
 			$publications[] = $row;
 		}
-		$smarty->assign("publication",$publications);
+		$smarty->assign("publication", $publications);
 	}
 
 	if(!$query_user = mysqli_query($connection, "SELECT id_user, name, surname, profile_photo FROM tbl_users WHERE id_user='$id_user'")){
@@ -66,6 +67,34 @@ if (!is_logged()){
 			$followers = $row['followers'];
 		}
 		$smarty->assign("followers", $followers);
+	}
+
+	if(!$query_average = mysqli_query($connection, "SELECT AVG(valuation) AS average, id_publication FROM tbl_valuations GROUP BY  id_publication")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if(mysqli_num_rows($query_average)>0){
+		while ($row = mysqli_fetch_assoc($query_average)){
+			$average[] = $row;
+		}
+		$smarty->assign("average",$average);
+	}
+
+	if(!$query_my_valuations = mysqli_query($connection, "SELECT valuation, id_publication FROM tbl_valuations WHERE id_user='$id_user'")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if(mysqli_num_rows($query_my_valuations)>0){
+		while ($row = mysqli_fetch_assoc($query_my_valuations)){
+			$my_valuations[] = $row;
+		}
+		$smarty->assign("my_valuations",$my_valuations);
 	}
 
 	$smarty -> display('newsfeed.tpl');
