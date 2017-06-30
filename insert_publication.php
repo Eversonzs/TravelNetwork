@@ -30,7 +30,7 @@
 				mysql_close($connection);
 				die();
 		    }
-
+		    
 		    if (file_exists('images/post-images/'.$_FILES['image']['name'])) {
 		            $smarty->assign('message','ERROR: File already exists in the directory, rename it and try again.');
 					$smarty->display('message.tpl');
@@ -43,7 +43,7 @@
 				$smarty->display('message.tpl');
 				mysql_close($connection);
 				die();
-		    } 
+		    }
 
 			$image_name = $_FILES['image']['name'];//creazione preview con GD library
 		    $new_width=240;      //Larghezza immagine ridimensionata
@@ -94,7 +94,7 @@
 		}
 
 	} else{
-		$smarty->assign('message','ERROR: You are not enable to publish or the publication is empty! '.mysqli_error($connection));
+		$smarty->assign('message','ERROR: The publication is empty or you are not enable to publish! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();

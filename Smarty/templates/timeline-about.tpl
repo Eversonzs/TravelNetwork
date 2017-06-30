@@ -95,7 +95,7 @@
                         <div class="row">
                           <div class="form-group col-xs-12">
                             <label for="password" class="sr-only">Password</label>
-                            <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Enter your password" value="{$smarty_user.user_password}" required/>
+                            <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Enter your password" required/>
                           </div>
                         </div>
                         <div class="row">

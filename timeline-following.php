@@ -1,5 +1,6 @@
 <?php
 	include ('config/core.php');
+	include('config/pagination.php');
 
 	if (!is_logged()){
 		header('location: index-register.php');
@@ -81,18 +82,32 @@
 	}
 	$smarty->assign("already_following", $already_following);
 
-	if(!$query_following = mysqli_query($connection, "SELECT * FROM tbl_friends INNER JOIN tbl_users ON tbl_friends.id_user = tbl_users.id_user WHERE tbl_friends.id_friend='$id_user'")){
+	$string_query_following = "SELECT * FROM tbl_friends INNER JOIN tbl_users ON tbl_friends.id_user = tbl_users.id_user WHERE tbl_friends.id_friend='$id_user'";
+
+	if(!$query_following = mysqli_query($connection, $string_query_following)){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();
 	}
 
-	if (mysqli_num_rows($query_following)>0){
-		while ($row = mysqli_fetch_assoc($query_following)){
-			$following[] = $row;
-		}
-		$smarty->assign("following", $following);
+	$x_pagina=20;
+
+	// Eseguo la paginazione
+	$p = new Pagination($connection, $string_query_following, $x_pagina, "pagina");
+
+	if($record_s = $p->Show()){
+	$smarty->assign("following",$record_s);
+	/*passo il numero di righe per decidere se inserire o no la scelta del numero di prodotti per pagina*/
+	$smarty->assign("num_tot",mysqli_num_rows($query_following));
+	}
+
+	if($link = $p->link(3)){
+		$smarty->assign('_prima',$link['primo']);
+		$smarty->assign('_prec',$link['precedente']);
+		$smarty->assign('_corr',$link['corrente']);	
+		$smarty->assign('_succ',$link['successivo']);     
+		$smarty->assign('_ultima',$link['ultimo']);	
 	}
 
 	$smarty -> display('timeline-following.tpl');

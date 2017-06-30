@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/rating.css" />
     <link href="css/emoji.css" rel="stylesheet"/>
     <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
 
 
 
@@ -73,7 +74,7 @@
               </li>
               {if isset($delete_moderator)}
                 <li class="dropdown">
-                  <a href="group_manager.php">Manager</a>
+                  <a href="group_manager.php">Management</a>
                 </li>
               {/if}
               <li class="dropdown">
@@ -81,14 +82,23 @@
                 <a href="logout.php" >Logout</a>
               </li>
             </ul>
-            <form class="navbar-form navbar-right hidden-sm">
+
+            <form class="navbar-form navbar-right hidden-sm" method="POST" action="search.php">
               <div class="form-group">
                 <i class="icon ion-android-search"></i>
-                <input type="text" class="form-control" placeholder="Search friends, places, experiences">
+                <input type="text" autocomplete="off" name="value" class="form-control" id="inputString" onkeyup="lookup(this.value);" placeholder="Search friends, places, experiences"/>
+                 <ul class="dropdown-menu newsfeed-home" id="suggestions" style="display: none;">
+                  <ul class="dropdown" id="autoSuggestionsList">
+                  </ul>
+                </ul>
               </div>
+
             </form>
+
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
       </nav>
     </header>
+
+
     <!--Header End-->

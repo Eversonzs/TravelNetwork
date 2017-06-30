@@ -41,3 +41,7 @@ function edit_information(show){
     else
       document.getElementById("registration_form").style.display="block";
 }
+
+$("#timeline-nav-bar hidden-sm hidden-xs").click(function() {
+  alert( "clicked" );
+});

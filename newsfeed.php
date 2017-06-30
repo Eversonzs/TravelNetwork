@@ -1,26 +1,21 @@
 <?php
-include('config/core.php');
+	include('config/core.php');
+	include('config/pagination.php');
 
-if (!is_logged()){
-		header('location: index-register.php');
-		die();
+	if (!is_logged()){
+			header('location: index-register.php');
+			die();
 	}
 
 	$id_user = $_SESSION['id_user'];
 
+	$string_query_publication = "SELECT * FROM tbl_friends INNER JOIN tbl_users ON tbl_friends.id_user = tbl_users.id_user  INNER JOIN tbl_publications_users ON tbl_publications_users.id_user = tbl_users.id_user INNER JOIN tbl_publications ON tbl_publications.id_publication = tbl_publications_users.id_publication INNER JOIN tbl_gallery ON tbl_gallery.id_publication = tbl_publications.id_publication WHERE tbl_friends.id_friend='$id_user' ORDER BY tbl_publications.publication_date DESC";
 
-	if(!$query_publication = mysqli_query($connection, "SELECT * FROM tbl_friends INNER JOIN tbl_users ON tbl_friends.id_user = tbl_users.id_user  INNER JOIN tbl_publications_users ON tbl_publications_users.id_user = tbl_users.id_user INNER JOIN tbl_publications ON tbl_publications.id_publication = tbl_publications_users.id_publication INNER JOIN tbl_gallery ON tbl_gallery.id_publication = tbl_publications.id_publication WHERE tbl_friends.id_friend='$id_user' ORDER BY tbl_publications.publication_date DESC")){
+	if(!$query_publication = mysqli_query($connection, $string_query_publication)){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 		$smarty->display('message.tpl');
 		mysqli_close($connection);
 		die();
-	}
-
-	if (mysqli_num_rows($query_publication)>0){
-		while ($row = mysqli_fetch_assoc($query_publication)){
-			$publications[] = $row;
-		}
-		$smarty->assign("publication", $publications);
 	}
 
 	if(!$query_user = mysqli_query($connection, "SELECT id_user, name, surname, profile_photo FROM tbl_users WHERE id_user='$id_user'")){
@@ -95,6 +90,25 @@ if (!is_logged()){
 			$my_valuations[] = $row;
 		}
 		$smarty->assign("my_valuations",$my_valuations);
+	}
+
+	$x_pagina=10;
+	  
+	// Eseguo la paginazione
+	$p = new Pagination($connection, $string_query_publication, $x_pagina, "pagina");
+
+	if($record_s = $p->Show()){
+	$smarty->assign("publication",$record_s);
+	/*passo il numero di righe per decidere se inserire o no la scelta del numero di prodotti per pagina*/
+	$smarty->assign("num_tot",mysqli_num_rows($query_publication));
+	}
+
+	if($link = $p->link(3)){
+		$smarty->assign('_prima',$link['primo']);
+		$smarty->assign('_prec',$link['precedente']);
+		$smarty->assign('_corr',$link['corrente']);	
+		$smarty->assign('_succ',$link['successivo']);     
+		$smarty->assign('_ultima',$link['ultimo']);	
 	}
 
 	$smarty -> display('newsfeed.tpl');

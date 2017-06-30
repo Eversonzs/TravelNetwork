@@ -7,16 +7,12 @@ include('config/core.php');
 
 	$id_user = $_SESSION['id_user'];
 
-	if (isset($_REQUEST['group'])) {
-		$group = filtra($_REQUEST['group'], $connection);
-		$smarty->assign("name_group",$group);
-	}
-	
 	if (isset($_REQUEST['users'])) {
 		$users = filtra($_REQUEST['users'], $connection);
 	}
 
 	if(check_permission($connection, "delete_group")){
+
 		if(!$query_groups = mysqli_query($connection, "SELECT * FROM tbl_groups")){
 			$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 			$smarty->display('message.tpl');
@@ -31,34 +27,35 @@ include('config/core.php');
 			$smarty->assign("groups", $groups);
 		}
 
-		if(isset($group)){
-			if(!$query = mysqli_query($connection, "SELECT * FROM tbl_permissions")){
+		if($users == "all"){
+			if(!$query_users = mysqli_query($connection, "SELECT * FROM tbl_users")){
 				$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 				$smarty->display('message.tpl');
 				mysqli_close($connection);
 				die();
 			}
 
-			if (mysqli_num_rows($query)>0){
-				while ($row = mysqli_fetch_assoc($query)){
-					$permissions[] = $row;
+			if (mysqli_num_rows($query_users)>0){
+				while ($row = mysqli_fetch_assoc($query_users)){
+					$all_users[] = $row;
 				}
-				$smarty->assign("permissions", $permissions);
+				$smarty->assign("users", $all_users);
 			}
-
-			if(!$query_group_permissions = mysqli_query($connection, "SELECT * FROM tbl_permissions_groups INNER JOIN tbl_permissions ON tbl_permissions_groups.id_permission = tbl_permissions.id_permission INNER JOIN tbl_groups ON tbl_permissions_groups.id_group = tbl_groups.id_group WHERE tbl_groups.group='$group'")){
+		}else{
+			if(!$query_users = mysqli_query($connection, "SELECT * FROM tbl_users INNER JOIN tbl_users_groups ON tbl_users.id_user = tbl_users_groups.id_user WHERE tbl_users_groups.id_group='$users'")){
 				$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
 				$smarty->display('message.tpl');
 				mysqli_close($connection);
 				die();
 			}
 
-			if (mysqli_num_rows($query_group_permissions)>0){
-				while ($row = mysqli_fetch_assoc($query_group_permissions)){
-					$group_permissions[] = $row;
+			if (mysqli_num_rows($query_users)>0){
+				while ($row = mysqli_fetch_assoc($query_users)){
+					$users_groups[] = $row;
 				}
-				$smarty->assign("group_permissions", $group_permissions);
+				$smarty->assign("users", $users_groups);
 			}
+
 		}
 		
 	} else{
@@ -66,6 +63,6 @@ include('config/core.php');
 		die();
 	}
 
-$smarty -> display('group_manager.tpl');
+$smarty -> display('users_management.tpl');
 
 ?>

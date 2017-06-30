@@ -441,7 +441,7 @@
                       </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Login Now</button>
-                    <p><a href="#">Forgot Password?</a></p>
+                    <p><a href="recovery_password.php">Forgot Password?</a></p>
                   </form><!--Login Form Ends-->
                   
                   

@@ -39,6 +39,16 @@ $smarty = new Setup_Smarty();
 	 	return 0;
 	 }
 
+	function my_random(){
+	    $lunghezza=8;
+		$caratteri_disponibili ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+		$codice = "";
+		for($i = 0; $i<$lunghezza; $i++){
+			$codice = $codice.substr($caratteri_disponibili,rand(0,strlen($caratteri_disponibili)-1),1);
+	}
+		return $codice;
+	}
+
 	function check_permission($connection, $permission){
 		if(isset($_SESSION['id_user'])){
 			$id_user = $_SESSION['id_user'];

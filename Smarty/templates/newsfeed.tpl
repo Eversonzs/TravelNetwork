@@ -20,10 +20,8 @@
               <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Images</a></div></li>
               <li><i class="icon ion-ios-videocam"></i><div><a href="newsfeed-videos.html">Videos</a></div></li>
             </ul><!--news-feed links ends-->
-            
           </div>
           <div class="col-md-7">
-
             <!-- Post Create Box
             ================================================= -->
             <form name="form_publish" id='form_publish' action="insert_publication.php" method="POST" enctype="multipart/form-data" >
@@ -40,13 +38,13 @@
                   <div class="col-md-5 col-sm-5">
                     <div class="tools">
                       <ul class="publishing-tools list-inline">
-                        <li><a href="#"><i class="ion-compose"></i></a></li>
+                        <li><a href="#"><i class="ion-map"></i></a></li>
                         <li><a href="#"><label for="files" class="ion-images"></label><input type="file" id="files" name="image" size="50" class="file" /></a></li>
                         <script>
                           document.getElementById('files').addEventListener('change', image, false);
                         </script>
                         <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                        <li><a href="#"><i class="ion-map"></i></a></li>
+                        <li><a href="#"><i class="ion-compose"></i></a></li>
                       </ul>
                       <button class="btn btn-primary pull-right" type="submit">Publish</button>
                     </div>
@@ -66,7 +64,6 @@
                       <div class="user-info">
                         <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a></h5>
                         <p class="text-muted">{$smarty_publication.publication_date}</p>
-
                       </div>
                       <div class="reaction">
                         {if $smarty_publication.id_user == $smarty.session.id_user || isset($delete_publication)}
@@ -132,29 +129,46 @@
                           {/if}
                         {/foreach}
                       {/if}
-                      {if isset($user)}
-                        {foreach name=tbl_users item=smarty_user from=$user}
-                          <form name="form_comment" id='form_comment' action="insert_comment.php" method="POST">
-                            <div class="post-comment">
-                              <img src="images/users/{if $smarty_user.profile_photo}{$smarty_user.profile_photo}{else}user_without_photo.jpg{/if}" class="profile-photo-sm" />
-                              <input type="hidden" name="id_publication" value="{$smarty_publication.id_publication}"/>
-                              <input type="textarea" class="form-control" name="comment" placeholder="Share your opinion"/>
-                              <input type="hidden" name="page" value="newsfeed"/>
-                              <input type="hidden" name="id_user" value="{$smarty_user.id_user}"/>
-                              <button class="btn btn-circle btn-comment" type="submit"><i class="icon ion-android-send"></i></button>
-                            </div>
-                          </form>
-                        {/foreach}
-                      {/if}
+                      <form name="form_comment" id='form_comment' action="insert_comment.php" method="POST">
+                        <div class="post-comment">
+                          <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" class="profile-photo-sm" />
+                          <input type="hidden" name="id_publication" value="{$smarty_publication.id_publication}"/>
+                          <input type="textarea" class="form-control" name="comment" placeholder="Share your opinion"/>
+                          <input type="hidden" name="page" value="newsfeed"/>
+                          <input type="hidden" name="id_user" value="{$smarty.session.id_user}"/>
+                          <button class="btn btn-circle btn-comment" type="submit"><i class="icon ion-android-send"></i></button>
+                        </div>
+                      </form>
                       <div class="line-divider"></div>
                     </div>
                   </div>
                 </div>
               {/foreach}
             {/if}
+            <div class="post-pagination">
+              <div class="pagination">
+                {if isset($_prima)}
+                  <a href="newsfeed.php?pagina={$_prima}" class="links ion-chevron-left"></a>
+                {/if}
+                {if isset($_prec)}{foreach item=precedente from=$_prec}
+                  <a href="newsfeed.php?pagina={$precedente}" class="links">{$precedente}</a>
+                {/foreach}{/if}
+                {if isset($_corr)}
+                  <a>{$_corr}</a>{/if}
+                  {if isset($_succ)}{foreach item=successivo from=$_succ}
+                    <a href="newsfeed.php?pagina={$successivo}" class="links">{$successivo}</a>
+                  {/foreach}{/if}
+                {if isset($_ultima)}
+                  <a href="newsfeed.php?pagina={$_ultima}" class="links ion-chevron-right"></a>
+                {/if}
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+
+                  
 
     <!-- Footer
     ================================================= -->

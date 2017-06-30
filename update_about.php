@@ -20,7 +20,9 @@ include('config/core.php');
 		$surname = filtra($_POST['lastname'], $connection);
 		$user_name = filtra($_POST['username'], $connection);
 		$email = filtra($_POST['Email'], $connection);
-		$user_password = filtra($_POST['password'], $connection);
+		$password = filtra($_POST['password'], $connection);
+		$user_password = sha1(md5($password));
+
 		$cellphone = filtra($_POST['cellphone'], $connection);
 		$born_date = $_POST['year'] . "-" . $_POST['month'] . "-" . $_POST['day'];
 

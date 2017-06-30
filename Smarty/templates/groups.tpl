@@ -87,26 +87,30 @@
         <div class="row">
           <div class="post-content">
             <div class="post-conteiner">
-              {if isset($permissions)}
+              <br>
+              
+              <form id="create_new_group_form" action="create_new_group.php" method="POST">
+                <h3><center>Create new group </center></h3>
+                <label> Group name: </label>  
+                <input type="text" id="group_name" name="group_name" placeholder="Name new group" /><br>
                 <br>
-                <h3><center>Groups permissions</center></h3>
-                <form name="update_group_permissions_form" id='update_group_permissions' class="form-inline" action="update_group_permissions.php" method="post">
-                  <ul>
-                    <ul><h4>{if isset($name_group)} {$name_group} {/if}</h4></ul>
-                      {foreach name=tbl_permissions item=smarty_permissions from=$permissions}
-                        <li><input type="checkbox" name="permissions[]" {if isset($group_permissions)} {foreach name=tbl_permissions item=smarty_group_permissions from=$group_permissions} {if $smarty_group_permissions.id_permission == $smarty_permissions.id_permission} checked {/if} {/foreach} {/if} value="{$smarty_permissions.id_permission}"> {$smarty_permissions.permission}, id permission = {$smarty_permissions.id_permission}</input></li>
-                      {/foreach}
-                  </ul>
-                  <input type="hidden" name="group" value="{$name_group}"/>
-                  <button type='submit' class="btn btn-primary">Update</button>
-                <form>
-              {/if}
+                <button type="submit" class="btn btn-default">Create</button>
+              </form>
+
+                <h3><center>Delete group </center></h3>
+                  {if isset($groups)}
+                    {foreach name=tbl_groups item=smarty_groups from=$groups}
+                      <label> Group name: </label>
+                      {$smarty_groups.group}<a class="btn text-red" href="delete_group.php?id_group={$smarty_groups.id_group}">x</a><br> 
+                    {/foreach}
+                  {/if}
+                  <br>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-
 
     <br><br><br><br><br>
     <!-- Footer

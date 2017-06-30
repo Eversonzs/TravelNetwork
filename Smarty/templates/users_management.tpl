@@ -87,19 +87,14 @@
         <div class="row">
           <div class="post-content">
             <div class="post-conteiner">
-              {if isset($permissions)}
+              {if isset($users)}
                 <br>
-                <h3><center>Groups permissions</center></h3>
-                <form name="update_group_permissions_form" id='update_group_permissions' class="form-inline" action="update_group_permissions.php" method="post">
-                  <ul>
-                    <ul><h4>{if isset($name_group)} {$name_group} {/if}</h4></ul>
-                      {foreach name=tbl_permissions item=smarty_permissions from=$permissions}
-                        <li><input type="checkbox" name="permissions[]" {if isset($group_permissions)} {foreach name=tbl_permissions item=smarty_group_permissions from=$group_permissions} {if $smarty_group_permissions.id_permission == $smarty_permissions.id_permission} checked {/if} {/foreach} {/if} value="{$smarty_permissions.id_permission}"> {$smarty_permissions.permission}, id permission = {$smarty_permissions.id_permission}</input></li>
-                      {/foreach}
-                  </ul>
-                  <input type="hidden" name="group" value="{$name_group}"/>
-                  <button type='submit' class="btn btn-primary">Update</button>
-                <form>
+                <h3><center>Users</center></h3><br>
+                {foreach name=tbl_users item=smarty_users from=$users}
+                  <p>Id: {$smarty_users.id_user}, Name: {$smarty_users.name} {$smarty_users.surname}, Username: {$smarty_users.user_name}, Email: {$smarty_users.email}, Cellphone: {$smarty_users.cellphone}, Born date: {$smarty_users.born_date}, Signup date: {$smarty_users.signup_date}, About me: {$smarty_users.about_me} <a class="btn text-red" href="delete_user.php?id_user={$smarty_users.id_user}">x</a></p>
+                  <div class="line-divider"></div>
+
+                {/foreach}
               {/if}
             </div>
           </div>

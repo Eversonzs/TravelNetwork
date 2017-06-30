@@ -82,6 +82,29 @@
                   {/if}
                 </div>
               </div>
+              
+                <div class="post-pagination">
+                  <div class="pagination">
+                    {if isset($_prima)}
+                      <a href="timeline-followers.php?pagina={$_prima}&id_user={$smarty_user.id_user}" class="links ion-chevron-left"></a>
+                    {/if}
+                    {if isset($_prec)}
+                        {foreach item=precedente from=$_prec}
+                          <a href="timeline-followers.php?pagina={$precedente}&id_user={$smarty_user.id_user}" class="links">{$precedente}</a>
+                        {/foreach}
+                    {/if}
+                    {if isset($_corr)}
+                      <a>{$_corr}</a>{/if}
+                      {if isset($_succ)}
+                        {foreach item=successivo from=$_succ}
+                            <a href="timeline-followers.php?pagina={$successivo}&id_user={$smarty_user.id_user}" class="links">{$successivo}</a>
+                        {/foreach}
+                      {/if}
+                    {if isset($_ultima)}
+                      <a href="timeline-followers.php?pagina={$_ultima}&id_user={$smarty_user.id_user}" class="links ion-chevron-right"></a>
+                    {/if}
+                </div>
+              </div>
             </div>
 
             <div class="col-md-2 static">
