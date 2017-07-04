@@ -14,11 +14,8 @@
             </div><!--profile card ends-->
             <ul class="nav-news-feed">
               <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.php">My Newsfeed</a></div></li>
-              <li><i class="icon ion-ios-people"></i><div><a href="newsfeed-people-nearby.html">People Nearby</a></div></li>
-              <li><i class="icon ion-ios-people-outline"></i><div><a href="newsfeed-friends.html">Friends</a></div></li>
-              <li><i class="icon ion-chatboxes"></i><div><a href="newsfeed-messages.html">Messages</a></div></li>
-              <li><i class="icon ion-images"></i><div><a href="newsfeed-images.html">Images</a></div></li>
-              <li><i class="icon ion-ios-videocam"></i><div><a href="newsfeed-videos.html">Videos</a></div></li>
+              <li><i class="icon ion-ios-people"></i><div><a href="create_event.php">Create Event</a></div></li>
+              <li><i class="icon ion-ios-people"></i><div><a href="my_events.php">My events</a></div></li>
             </ul><!--news-feed links ends-->
           </div>
           <div class="col-md-7">
@@ -28,25 +25,37 @@
               <output id="list"> </output>
               <div class="create-post">
                 <div class="row">
-                  <div class="col-md-7 col-sm-7">
+                  <div class="col-md-8 col-sm-8">
                     <div class="form-group">
                       <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-md" />
-                      <textarea name='description' id="description" cols="30" rows="1" class="form-control" placeholder="Share your experience"></textarea>
+                      <textarea name='description' id="description" cols="30" rows="1" class="form-control" placeholder="Share your experience" style="width: 315px;"></textarea>
                       <input type="hidden" name="page" value="newsfeed"/>
                     </div>
                   </div>
-                  <div class="col-md-5 col-sm-5">
+                  <div class="col-md-4 col-sm-2">
                     <div class="tools">
                       <ul class="publishing-tools list-inline">
-                        <li><a href="#"><i class="ion-map"></i></a></li>
                         <li><a href="#"><label for="files" class="ion-images"></label><input type="file" id="files" name="image" size="50" class="file" /></a></li>
                         <script>
                           document.getElementById('files').addEventListener('change', image, false);
                         </script>
-                        <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                        <li><a href="#"><i class="ion-compose"></i></a></li>
                       </ul>
-                      <button class="btn btn-primary pull-right" type="submit">Publish</button>
+                      <button class="btn btn-primary" type="submit">Publish</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-md-8 col-sm-8">
+                    <div class="form-group" style="width: 100%;">
+                      <label style="width: 160px;">Select a category: </label>
+                      <select class="form-control" name="category">
+                        <option value="" disabled selected>Select a category</option>
+                        {if isset($categories)}
+                          {foreach name=tbl_publication_category item=smarty_categories from=$categories}
+                            <option value="{$smarty_categories.id_publication_category}">{$smarty_categories.category_description}</option>
+                          {/foreach}
+                        {/if}
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -63,7 +72,7 @@
                     <div class="post-detail">
                       <div class="user-info">
                         <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a></h5>
-                        <p class="text-muted">{$smarty_publication.publication_date}</p>
+                        <p class="text-muted">{$smarty_publication.publication_date} - <b style="color: #30448d;">{$smarty_publication.category_description}</b></p>
                       </div>
                       <div class="reaction">
                         {if $smarty_publication.id_user == $smarty.session.id_user || isset($delete_publication)}
@@ -168,89 +177,4 @@
     </div>
   </div>
 
-                  
-
-    <!-- Footer
-    ================================================= -->
-    <footer id="footer">
-      <div class="container">
-        <div class="row">
-          <div class="footer-wrapper">
-            <div class="col-md-3 col-sm-3">
-              <a href="#"><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
-              <ul class="list-inline social-icons">
-                <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For individuals</h6>
-              <ul class="footer-links">
-                <li><a href="#">Signup</a></li>
-                <li><a href="#">login</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Finder app</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Language settings</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For businesses</h6>
-              <ul class="footer-links">
-                <li><a href="#">Business signup</a></li>
-                <li><a href="#">Business login</a></li>
-                <li><a href="#">Benefits</a></li>
-                <li><a href="#">Resources</a></li>
-                <li><a href="#">Advertise</a></li>
-                <li><a href="#">Setup</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>About</h6>
-              <ul class="footer-links">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Help</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <h6>Contact Us</h6>
-                <ul class="contact">
-                  <li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
-                  <li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
-                  <li><i class="icon ion-ios-location-outline"></i>228 Park Ave S NY, USA</li>
-                </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>Travel Network © 2017. All rights reserved</p>
-      </div>
-    </footer>
-    
-    <!--preloader-->
-    <div id="spinner-wrapper">
-      <div class="spinner"></div>
-    </div>
-    
-    <!-- Scripts
-    ================================================= -->
-    <!--
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTMXfmDn0VlqWIyoOxK8997L-amWbUPiQ&amp;callback=initMap"></script>
-    -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky-kit.min.js"></script>
-    <script src="js/jquery.scrollbar.min.js"></script>
-    <script src="js/script.js"></script>
-  
-
-  </body>
-
-<!-- Mirrored from thunder-team.com/friend-finder/newsfeed.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Feb 2017 11:16:58 GMT -->
-</html>
+{include file="footer.tpl"}

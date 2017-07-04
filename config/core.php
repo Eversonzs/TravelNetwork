@@ -130,6 +130,22 @@ $smarty = new Setup_Smarty();
 		if (check_permission($connection, "delete_valuation")){
 			$smarty->assign("delete_valuation", 1);
 		}
+
+		if (check_permission($connection, "create_event")){
+			$smarty->assign("create_event", 1);
+		}
+
+		if (check_permission($connection, "modify_event")){
+			$smarty->assign("modify_event", 1);
+		}
+
+		if (check_permission($connection, "delete_event")){
+			$smarty->assign("delete_event", 1);
+		}
+
+		if (check_permission($connection, "accept_category")){
+			$smarty->assign("accept_category", 1);
+		}
 	}
 
 	function filtra($var, $connection){

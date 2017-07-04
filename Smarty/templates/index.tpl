@@ -152,9 +152,11 @@
 							{/if}
 						</li>
 						<li>
-							<div class="fact-icon"><i class="icon ion-checkmark-round"></i></div>
-							<h3 class="text-white">41,242</h3>
-							<p>People online</p>
+							{if isset($events_number)}
+								<div class="fact-icon"><i class="icon ion-calendar"></i></div>
+								<h3 class="text-white">{$events_number}</h3>
+								<p>Events created</p>
+							{/if}
 						</li>
 					</ul>
 				</div>
@@ -168,149 +170,54 @@
 			<div class="container wrapper">
 				<h1 class="section-title slideDown">live feed</h1>
 				<ul class="online-users list-inline slideUp">
-					<li><a href="#" title="Alexis Clark"><img src="images/users/user-5.jpg" alt="" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-          <li><a href="#" title="James Carter"><img src="images/users/user-6.jpg" alt="" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-          <li><a href="#" title="Robert Cook"><img src="images/users/user-7.jpg" alt="" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-          <li><a href="#" title="Richard Bell"><img src="images/users/user-8.jpg" alt="" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-          <li><a href="#" title="Anna Young"><img src="images/users/user-9.jpg" alt="" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
-          <li><a href="#" title="Julia Cox"><img src="images/users/user-10.jpg" alt="" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+                	{if isset($users)}
+                      	{foreach name=tbl_users item=smarty_users from=$users}
+							<li><a title="{$smarty_users.user_name}"><img src="images/users/{if $smarty_users.profile_photo}{$smarty_users.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="img-responsive profile-photo" /><span class="online-dot"></span></a></li>
+						{/foreach}
+					{/if}
 				</ul>
-				<h2 class="sub-title">see what’s happening now</h2>
+				<h2 class="sub-title">see the people enjoying travel</h2>
 				<div class="row">
-					<div class="col-md-4 col-sm-6 col-md-offset-2">
+					{if isset($users2)}
+                      	{foreach name=tbl_users item=smarty_users2 from=$users2}
+					<div class="col-md-4 col-sm-4 col-md-offset-2">
 						<div class="feed-item">
-							<img src="images/users/user-1.jpg" alt="user" class="img-responsive profile-photo-sm" />
+							<img src="images/users/{if $smarty_users2.profile_photo}{$smarty_users2.profile_photo}{else}user_without_photo.jpg{/if}" alt="user" class="img-responsive profile-photo-sm" />
 							<div class="live-activity">
-								<p><a href="#" class="profile-link">Sarah</a> just posted a photo from Moscow</p>
-								<p class="text-muted">20 Secs ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-4.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">John</a> Published a post from Sydney</p>
-								<p class="text-muted">1 min ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-10.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Julia</a> Updated her status from London</p>
-								<p class="text-muted">5 mins ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-3.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Sophia</a> Share a photo from Virginia</p>
-								<p class="text-muted">10 mins ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-2.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Linda</a> just posted a photo from Toronto</p>
-								<p class="text-muted">20 mins ago</p>
+								<p><a class="profile-link">{$smarty_users2.user_name}</a> with us since: </p>
+								<p class="text-muted">{$smarty_users2.signup_date}</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4 col-sm-6">
-						<div class="feed-item">
-							<img src="images/users/user-17.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Nora</a> Shared an article from Ohio</p>
-								<p class="text-muted">22 mins ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-18.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Addison</a> Created a poll from Barcelona</p>
-								<p class="text-muted">23 mins ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-11.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Diana</a> Posted a video from Captown</p>
-								<p class="text-muted">27 mins ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-1.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Sarah</a> Shared friend's post from Moscow</p>
-								<p class="text-muted">30 mins ago</p>
-							</div>
-						</div>
-						<div class="feed-item">
-							<img src="images/users/user-16.jpg" alt="user" class="img-responsive profile-photo-sm" />
-							<div class="live-activity">
-								<p><a href="#" class="profile-link">Emma</a> Started a new job at Torronto</p>
-								<p class="text-muted">33 mins ago</p>
-							</div>
-						</div>
-					</div>
+					{/foreach}
+					{/if}
 				</div>
 			</div>
 		</section>
 
     <!-- Footer
     ================================================= -->
-		<footer id="footer">
+	<footer id="footer">
       <div class="container">
       	<div class="row">
           <div class="footer-wrapper">
-            <div class="col-md-3 col-sm-3">
-              <a href="#"><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
-              <ul class="list-inline social-icons">
-              	<li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
-              	<li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For individuals</h6>
-              <ul class="footer-links">
-                <li><a href="#">Signup</a></li>
-                <li><a href="#">login</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Finder app</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Language settings</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For businesses</h6>
-              <ul class="footer-links">
-                <li><a href="#">Business signup</a></li>
-                <li><a href="#">Business login</a></li>
-                <li><a href="#">Benefits</a></li>
-                <li><a href="#">Resources</a></li>
-                <li><a href="#">Advertise</a></li>
-                <li><a href="#">Setup</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>About</h6>
-              <ul class="footer-links">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Help</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <h6>Contact Us</h6>
-                <ul class="contact">
-                	<li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
-                	<li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
-                  <li><i class="icon ion-ios-location-outline"></i>228 Park Ave S NY, USA</li>
-                </ul>
-            </div>
+            <div class="col-md-4 col-sm-4" style="float: left;">
+	            <a href="#"><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
+	            <ul class="list-inline social-icons">
+	                <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
+	                <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
+	                <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
+	                <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
+	                <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
+	            </ul>
+	        </div>
+	        <div class="col-md-4 col-sm-4" style="float: right;">
+	            <h6>Contact Us</h6>
+	            <ul class="contact">
+	                <li><i class="icon ion-ios-email-outline"></i>eversonzs@hotmail.com</li>
+	                <li><i class="icon ion-ios-email-outline"></i>waleska.gutierrez@unah.hn</li>
+	            </ul>
+	        </div>
           </div>
       	</div>
       </div>
@@ -329,7 +236,7 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.appear.min.js"></script>
-		<script src="js/jquery.incremental-counter.js"></script>
+	<script src="js/jquery.incremental-counter.js"></script>
     <script src="js/script.js"></script>
     
 	</body>

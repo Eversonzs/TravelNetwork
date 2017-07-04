@@ -49,7 +49,7 @@
 			  // scrivo ed eseguo la query mirata
 			  $n_righe = " LIMIT " . $inizio . ", " . $x_pagina;
 			  if(!$run = mysqli_query($this->conn, $this->query . $n_righe)){
-			    echo "ERRORE: ".mysqli_error();
+			    echo "ERRORE: ".mysqli_error($conn);
 			    die();
 			  }
 			  

@@ -8,6 +8,7 @@
 
 	$id_user = $_SESSION['id_user'];
 	$description_publication = filtra($_POST['description'], $connection);
+	$category =filtra($_POST['category'], $connection);
 	$page = filtra($_POST['page'], $connection);
 
 	if(check_permission($connection, "write") && $description_publication !=""){
@@ -79,11 +80,18 @@
 			$id_publication = mysqli_insert_id($connection);
 
 			if(!$query_user_publication = mysqli_query($connection, "INSERT INTO tbl_publications_users(id_publication, id_user) VALUES('$id_publication', '$id_user')")){
-					$smarty->assign('message', 'ERROR: SQL error trying to publish. ' .mysqli_error($connection));
-					$smarty->display('message.tpl');
-					mysqli_close($connection);
-					die();
-				}
+				$smarty->assign('message', 'ERROR: SQL error trying to publish. ' .mysqli_error($connection));
+				$smarty->display('message.tpl');
+				mysqli_close($connection);
+				die();
+			}
+
+			if(!$query_user_publication = mysqli_query($connection, "INSERT INTO tbl_publication_categories(id_publication, id_publication_category) VALUES('$id_publication', '$category')")){
+				$smarty->assign('message', 'ERROR: SQL error trying to publish. ' .mysqli_error($connection));
+				$smarty->display('message.tpl');
+				mysqli_close($connection);
+				die();
+			}
 
 			if(!mysqli_query($connection, "INSERT INTO tbl_gallery (id_publication, file) VALUES('$id_publication','$image_name')")){
 				$smarty->assign('message','ERROR: Error uploading image, failed to save to database.');

@@ -33,5 +33,47 @@ include('config/core.php');
 		$smarty->assign("publishing_number", $publishing_number);
 	}
 
+	if(!$query_events = mysqli_query($connection, "SELECT count(*) as events_number FROM tbl_events")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if (mysqli_num_rows($query_events)>0){
+		while ($row = mysqli_fetch_assoc($query_events)){
+			$events_number= $row['events_number'];
+		}
+		$smarty->assign("events_number", $events_number);
+	}
+
+	if(!$query_users = mysqli_query($connection, "SELECT user_name, profile_photo FROM tbl_users LIMIT 5")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if (mysqli_num_rows($query_users)>0){
+		while ($row = mysqli_fetch_assoc($query_users)){
+			$users[] = $row;
+		}
+		$smarty->assign("users", $users);
+	}
+
+	if(!$query_users2 = mysqli_query($connection, "SELECT user_name, profile_photo, signup_date FROM tbl_users LIMIT 20")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if (mysqli_num_rows($query_users2)>0){
+		while ($row = mysqli_fetch_assoc($query_users2)){
+			$users2[] = $row;
+		}
+		$smarty->assign("users2", $users2);
+	}
+
 $smarty -> display('index.tpl');
 ?>

@@ -453,147 +453,23 @@
                         </ul>
                     </div>
                     <div class="about-content-block">
-                      <h4 class="grey"><i class="ion-ios-location-outline icon-in-title"></i>Location</h4>
-                      <p>228 Park Eve, New York</p>
-                      <div class="google-maps">
-                        <div id="map" class="map"></div>
-                      </div>
-                    </div>
-                    <div class="about-content-block">
                       <h4 class="grey"><i class="ion-ios-heart-outline icon-in-title"></i>Interests</h4>
                       <ul class="interests list-inline">
                         <li><span class="int-icons" title="Bycycle riding"><i class="icon ion-android-bicycle"></i></span></li>
                         <li><span class="int-icons" title="Photography"><i class="icon ion-ios-camera"></i></span></li>
-                        <li><span class="int-icons" title="Shopping"><i class="icon ion-android-cart"></i></span></li>
-                        <li><span class="int-icons" title="Traveling"><i class="icon ion-ios-locked"></i></span></li>
-                        <li><span class="int-icons" title="Eating"><i class="icon ion-android-lock"></i></span></li>
-                        <li><span class="int-icons" title="Driving"><i class="icon ion-android-calendar"></i></span></li>
+                        <li><span class="int-icons" title="Eating"><i class="icon ion-pizza"></i></span></li>
+                        <li><span class="int-icons" title="Drinking"><i class="icon ion-wineglass"></i></span></li>
+                        <li><span class="int-icons" title="Plane"><i class="icon ion-android-plane"></i></span></li>
                       </ul>
-                    </div>
-                    <div class="about-content-block">
-                      <h4 class="grey"><i class="ion-ios-chatbubble-outline icon-in-title"></i>Language</h4>
-                        <ul>
-                          <li><a href="#">Russian</a></li>
-                          <li><a href="#">English</a></li>
-                        </ul>
                     </div>
                   {/foreach}
                 {/if}
               </div>
             </div>
-            <div class="col-md-2 static">
-              <div id="sticky-sidebar">
-                <h4 class="grey">Sarah's activity</h4>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Commended on a Photo</p>
-                    <p class="text-muted">5 mins ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Has posted a photo</p>
-                    <p class="text-muted">an hour ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> Liked her friend's post</p>
-                    <p class="text-muted">4 hours ago</p>
-                  </div>
-                </div>
-                <div class="feed-item">
-                  <div class="live-activity">
-                    <p><a href="#" class="profile-link">Sarah</a> has shared an album</p>
-                    <p class="text-muted">a day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
 
 
-    <!-- Footer
-    ================================================= -->
-    <footer id="footer">
-      <div class="container">
-        <div class="row">
-          <div class="footer-wrapper">
-            <div class="col-md-3 col-sm-3">
-              <a href="#"><img src="images/logo-black.png" alt="" class="footer-logo" /></a>
-              <ul class="list-inline social-icons">
-                <li><a href="#"><i class="icon ion-social-facebook"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-twitter"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-googleplus"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-pinterest"></i></a></li>
-                <li><a href="#"><i class="icon ion-social-linkedin"></i></a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For individuals</h6>
-              <ul class="footer-links">
-                <li><a href="#">Signup</a></li>
-                <li><a href="#">login</a></li>
-                <li><a href="#">Explore</a></li>
-                <li><a href="#">Finder app</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Language settings</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>For businesses</h6>
-              <ul class="footer-links">
-                <li><a href="#">Business signup</a></li>
-                <li><a href="#">Business login</a></li>
-                <li><a href="#">Benefits</a></li>
-                <li><a href="#">Resources</a></li>
-                <li><a href="#">Advertise</a></li>
-                <li><a href="#">Setup</a></li>
-              </ul>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <h6>About</h6>
-              <ul class="footer-links">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Help</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 col-sm-3">
-              <h6>Contact Us</h6>
-                <ul class="contact">
-                  <li><i class="icon ion-ios-telephone-outline"></i>+1 (234) 222 0754</li>
-                  <li><i class="icon ion-ios-email-outline"></i>info@thunder-team.com</li>
-                  <li><i class="icon ion-ios-location-outline"></i>228 Park Ave S NY, USA</li>
-                </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>Travel Network © 2017. All rights reserved</p>
-      </div>
-    </footer>
-    
-    <!--preloader-->
-    <div id="spinner-wrapper">
-      <div class="spinner"></div>
-    </div>
-
-    <!-- Scripts
-    ================================================= -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTMXfmDn0VlqWIyoOxK8997L-amWbUPiQ&amp;callback=initMap"></script>
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.sticky-kit.min.js"></script>
-    <script src="js/jquery.scrollbar.min.js"></script>
-    <script src="js/script.js"></script>
-    
-  </body>
-
-</html>
+  {include file="footer.tpl"}

@@ -107,7 +107,6 @@ include('config/core.php');
 		mysqli_close($connection);
 		die();
 		
-
 		//header('location: newsfeed.php');
 	}
 ?>

@@ -1158,7 +1158,17 @@ ul.online-users li span.online-dot{
   display: inline-flex;
 }
 
+.create-post .form-group2{
+  margin-bottom: 0;
+  width: 100%;
+  display: inline-flex;
+}
+
 .create-post .form-group img.profile-photo-md{
+  margin-right: 10px;
+}
+
+.create-post .form-group2 img.profile-photo-md{
   margin-right: 10px;
 }
 

@@ -55,12 +55,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Newsfeed <span><img src="images/down-arrow.png" alt="" /></span></a>
                   <ul class="dropdown-menu newsfeed-home">
-                    <li><a href="newsfeed.php">Newsfeed</a></li>
-                    <li><a href="newsfeed-people-nearby.html">Poeple Nearly</a></li>
-                    <li><a href="newsfeed-friends.html">My friends</a></li>
-                    <li><a href="newsfeed-messages.html">Chatroom</a></li>
-                    <li><a href="newsfeed-images.html">Images</a></li>
-                    <li><a href="newsfeed-videos.html">Videos</a></li>
+                    <li><a href="newsfeed.php">My Newsfeed</a></li>
+                    <li><a href="create_event.php">Create Event</a></li>
+                    <li><a href="my_events.php">My events</a></li>
                   </ul>
               </li>
               <li class="dropdown">
