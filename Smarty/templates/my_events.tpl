@@ -16,6 +16,7 @@
               <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.php">My Newsfeed</a></div></li>
               <li><i class="icon ion-ios-people"></i><div><a href="create_event.php">Create Event</a></div></li>
               <li><i class="icon ion-ios-people"></i><div><a href="my_events.php">My events</a></div></li>
+              <li><i class="icon ion-star" style="color: #0166fc;"></i><div><a href="events_invitation.php">Events invitation</a></div></li>
             </ul><!--news-feed links ends-->
           </div>
 

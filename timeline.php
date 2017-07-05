@@ -10,7 +10,7 @@
 	$id_user = filtra($_GET['id_user'], $connection);
 	$id_user_logged = $_SESSION['id_user'];
 
-	$string_query_publications = "SELECT * FROM tbl_publications AS A INNER JOIN tbl_publications_users AS B ON A.id_publication = B.id_publication INNER JOIN tbl_users ON tbl_users.id_user = B.id_user INNER JOIN tbl_gallery AS C ON A.id_publication = C.id_publication WHERE B.id_user = '$id_user' ORDER BY A.publication_date DESC";
+	$string_query_publications = "SELECT * FROM tbl_publications AS A INNER JOIN tbl_publications_categories AS P ON A.id_publication = P.id_publication INNER JOIN tbl_publication_category AS PC ON PC.id_publication_category = P.id_publication_category INNER JOIN tbl_publications_users AS B ON A.id_publication = B.id_publication INNER JOIN tbl_users ON tbl_users.id_user = B.id_user INNER JOIN tbl_gallery AS C ON A.id_publication = C.id_publication WHERE B.id_user = '$id_user' ORDER BY A.publication_date DESC";
 
 	if(!$query = mysqli_query($connection, $string_query_publications)){
 		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
@@ -107,6 +107,20 @@
 			$my_valuations[] = $row;
 		}
 		$smarty->assign("my_valuations",$my_valuations);
+	}
+
+	if(!$query_categories = mysqli_query($connection, "SELECT * FROM tbl_publication_category")){
+		$smarty->assign('message','ERROR: SQL error, try again! '.mysqli_error($connection));
+		$smarty->display('message.tpl');
+		mysqli_close($connection);
+		die();
+	}
+
+	if(mysqli_num_rows($query_categories)>0){
+		while ($row = mysqli_fetch_assoc($query_categories)){
+			$categories[] = $row;
+		}
+		$smarty->assign("categories",$categories);
 	}
 
 	$x_pagina=10;

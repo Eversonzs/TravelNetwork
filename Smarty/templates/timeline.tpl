@@ -76,35 +76,45 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-7">
 
-                        <!-- Post Create Box
-                        ================================================= -->
-                        <form name="form_publish" id='form_publish' action="insert_publication.php" method="POST" enctype="multipart/form-data">
-                          <output id="list"></output>
-                            <div class="create-post">
-                                <div class="row">
-                                    <div class="col-md-7 col-sm-7">
-                                        <div class="form-group">
-                                            <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-md" />
-                                            <textarea name='description' id="description" cols="30" rows="1" class="form-control" placeholder="Share your experience"></textarea>
-                                            <input type="hidden" name="page" value="timeline"/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5 col-sm-5">
-                                        <div class="tools">
-                                            <ul class="publishing-tools list-inline">
-                                                <li><a href="#"><i class="ion-compose"></i></a></li>
-                                                <li><a href="#"><label for="files" class="ion-images"></label><input type="file" id="files" name="image" size="50" class="file" /></a></li>
-                                                <script>
-                                                  document.getElementById('files').addEventListener('change', image, false);
-                                                </script>
-                                                <li><a href="#"><i class="ion-ios-videocam"></i></a></li>
-                                                <li><a href="#"><i class="ion-map"></i></a></li>
-                                            </ul>
-                                            <button class="btn btn-primary pull-right" type="submit">Publish</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- Post Create Box End-->
+                    <form name="form_publish" id='form_publish' action="insert_publication.php" method="POST" enctype="multipart/form-data" >
+                      <output id="list"> </output>
+                      <div class="create-post">
+                        <div class="row">
+                          <div class="col-md-8 col-sm-8">
+                            <div class="form-group2">
+                              <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-md" />
+                              <textarea name='description' id="description" cols="30" rows="1" class="form-control" placeholder="Share your experience" style="width: 315px;"></textarea>
+                              <input type="hidden" name="page" value="timeline"/>
+                            </div>
+                          </div>
+                          <div class="col-md-4 col-sm-2">
+                            <div class="tools">
+                              <ul class="publishing-tools list-inline">
+                                <li><a href="#"><label for="files" class="ion-images"></label><input type="file" id="files" name="image" size="50" class="file" /></a></li>
+                                <script>
+                                  document.getElementById('files').addEventListener('change', image, false);
+                                </script>
+                              </ul>
+                              <button class="btn btn-primary" type="submit">Publish</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-8 col-sm-8">
+                            <div class="form-group" style="width: 100%;">
+                              <label style="width: 160px;">Select a category: </label>
+                              <select class="form-control" name="category">
+                                <option value="" disabled selected>Select a category</option>
+                                {if isset($categories)}
+                                  {foreach name=tbl_publication_category item=smarty_categories from=$categories}
+                                    <option value="{$smarty_categories.id_publication_category}">{$smarty_categories.category_description}</option>
+                                  {/foreach}
+                                {/if}
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!-- Post Create Box End-->
                         </form>
                         {/foreach}
                         {/if}
@@ -125,7 +135,7 @@
                                     <div class="post-detail">
                                         <div class="user-info">
                                             <h5><a href="timeline.php?id_user={$smarty_publication.id_user}" class="profile-link">{$smarty_publication.name} {$smarty_publication.surname}</a></h5>
-                                            <p class="text-muted">{$smarty_publication.publication_date}</p>
+                                            <p class="text-muted">{$smarty_publication.publication_date} - <b style="color: #30448d;">{$smarty_publication.category_description}</b> </p>
                                         </div>
                                         <div class="reaction">
                                           {if $smarty_publication.id_user == $smarty.session.id_user || isset($delete_publication)}

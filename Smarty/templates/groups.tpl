@@ -87,7 +87,7 @@
         <div class="row">
           <div class="post-content">
             <div class="post-conteiner">
-              <br>
+              <br><br>
               
               <form id="create_new_group_form" action="create_new_group.php" method="POST">
                 <h3><center>Create new group </center></h3>
@@ -96,6 +96,8 @@
                 <br>
                 <button type="submit" class="btn btn-default">Create</button>
               </form>
+
+              <br><div class="line-divider"></div>
 
                 <h3><center>Delete group </center></h3>
                   {if isset($groups)}

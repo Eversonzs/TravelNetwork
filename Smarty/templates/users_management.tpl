@@ -91,7 +91,12 @@
                 <br>
                 <h3><center>Users</center></h3><br>
                 {foreach name=tbl_users item=smarty_users from=$users}
-                  <p>Id: {$smarty_users.id_user}, Name: {$smarty_users.name} {$smarty_users.surname}, Username: {$smarty_users.user_name}, Email: {$smarty_users.email}, Cellphone: {$smarty_users.cellphone}, Born date: {$smarty_users.born_date}, Signup date: {$smarty_users.signup_date}, About me: {$smarty_users.about_me} <a class="btn text-red" href="delete_user.php?id_user={$smarty_users.id_user}">x</a></p>
+                  <p>Id: {$smarty_users.id_user}, Name: {$smarty_users.name} {$smarty_users.surname}, Username: {$smarty_users.user_name}, Email: {$smarty_users.email}, Cellphone: {$smarty_users.cellphone}, Born date: {$smarty_users.born_date}, Signup date: {$smarty_users.signup_date}, About me: {$smarty_users.about_me} <a class="btn text-red" href="delete_user.php?id_user={$smarty_users.id_user}">x</a><br>
+                    <a href="group_user.php?users=all&id_user={$smarty_users.id_user}&id_group=2"><button class="btn btn-make">Active user </button></a> 
+                    <a href="group_user.php?users=all&id_user={$smarty_users.id_user}&id_group=1"><button class="btn btn-make">Make administrator </button></a> 
+                    <a href="group_user.php?users=all&id_user={$smarty_users.id_user}&id_group=4"><button class="btn btn-make">Make moderator </button></a> 
+                    <a href="group_user.php?users=all&id_user={$smarty_users.id_user}&id_group=3"><button class="btn btn-make">Banish</button></a>
+                  </p><br>
                   <div class="line-divider"></div>
 
                 {/foreach}

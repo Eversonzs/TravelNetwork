@@ -187,6 +187,24 @@ section .wrapper{
   transition: all 1s;
 }
 
+.btn-make{
+  background: #4bc0f1;
+  padding: 5px 25px;
+  border: none;
+  font-size: 14px;
+  border-radius: 4px;
+  color: #fff;
+  position: relative;
+  font-weight: 600;
+  outline: none;
+  border-radius: 8px;
+}
+
+.btn-make:hover{
+  background: #149AC9;
+  transition: all 1s;
+}
+
 .btn-comment{
   background-color: transparent;
   border: none !important;

@@ -8,10 +8,15 @@
 
 	$id_user = $_SESSION['id_user'];
 	$description_publication = filtra($_POST['description'], $connection);
-	$category =filtra($_POST['category'], $connection);
+	if(isset($_POST['category'])){
+		$category =filtra($_POST['category'], $connection);
+	}else{
+		$category="";
+	}
+	
 	$page = filtra($_POST['page'], $connection);
 
-	if(check_permission($connection, "write") && $description_publication !=""){
+	if(check_permission($connection, "write") && $description_publication !="" && $category !=""){
 		///Start upload image
 		if (is_uploaded_file($_FILES['image']['tmp_name'])) {
 	    // Controllo che il file non superi i 2 MByte
@@ -86,7 +91,7 @@
 				die();
 			}
 
-			if(!$query_user_publication = mysqli_query($connection, "INSERT INTO tbl_publication_categories(id_publication, id_publication_category) VALUES('$id_publication', '$category')")){
+			if(!$query_user_publication = mysqli_query($connection, "INSERT INTO tbl_publications_categories(id_publication, id_publication_category) VALUES('$id_publication', '$category')")){
 				$smarty->assign('message', 'ERROR: SQL error trying to publish. ' .mysqli_error($connection));
 				$smarty->display('message.tpl');
 				mysqli_close($connection);

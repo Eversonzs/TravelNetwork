@@ -72,7 +72,7 @@
 			}
 
 			if (mysqli_num_rows($query_invite)<1){
-				if(!$query_insert = mysqli_query($connection, "INSERT INTO tbl_participation(id_user_sender, id_event, id_user_reciver, yes_or_not) VALUES('$id_user_loggeado', '$id_event', '$id_user', 'yes')")){
+				if(!$query_insert = mysqli_query($connection, "INSERT INTO tbl_participation(id_user_sender, id_event, id_user_reciver) VALUES('$id_user_loggeado', '$id_event', '$id_user')")){
 					$smarty->assign('message', 'ERROR: SQL error trying to invite this user. ' .mysqli_error($connection));
 					$smarty->display('message.tpl');
 					mysqli_close($connection);

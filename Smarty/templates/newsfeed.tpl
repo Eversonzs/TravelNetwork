@@ -16,6 +16,7 @@
               <li><i class="icon ion-ios-paper"></i><div><a href="newsfeed.php">My Newsfeed</a></div></li>
               <li><i class="icon ion-ios-people"></i><div><a href="create_event.php">Create Event</a></div></li>
               <li><i class="icon ion-ios-people"></i><div><a href="my_events.php">My events</a></div></li>
+              <li><i class="icon ion-star" style="color: #0166fc;"></i><div><a href="events_invitation.php">Events invitation</a></div></li>
             </ul><!--news-feed links ends-->
           </div>
           <div class="col-md-7">
@@ -26,7 +27,7 @@
               <div class="create-post">
                 <div class="row">
                   <div class="col-md-8 col-sm-8">
-                    <div class="form-group">
+                    <div class="form-group2">
                       <img src="images/users/{if $smarty.session.profile_photo}{$smarty.session.profile_photo}{else}user_without_photo.jpg{/if}" alt="" class="profile-photo-md" />
                       <textarea name='description' id="description" cols="30" rows="1" class="form-control" placeholder="Share your experience" style="width: 315px;"></textarea>
                       <input type="hidden" name="page" value="newsfeed"/>
